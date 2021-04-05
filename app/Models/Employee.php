@@ -10,4 +10,9 @@ class Employee extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    public function building()
+    {
+        return $this->hasOne(BuildingCity::class);
+    }
 }
