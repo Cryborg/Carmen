@@ -136,6 +136,8 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/pragmarx/ia-str" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/pragmarx/ia-arr" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/pragmarx/coollection" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/laravel/telescope" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/fruitcake/laravel-telescope-toolbar" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

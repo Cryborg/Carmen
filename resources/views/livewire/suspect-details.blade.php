@@ -3,7 +3,7 @@
         <div class="col">@lang('suspect.genre')</div>
         <div class="col">
             <select class="form-control" name="genre" wire:model="genre">
-                <option></option>
+                <option value=""></option>
                 @foreach ($genres as $genre)
                     <option value="{{ $genre }}">@lang('suspect.genres.' . $genre)</option>
                 @endforeach

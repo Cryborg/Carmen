@@ -16,6 +16,21 @@ class SuspectDetails extends Component
     public ?string $sign = null;
     public ?string $fashion_style = null;
 
+    public function mount()
+    {
+        $filters = session('filters') ?? [];
+
+        //array_filter($filters);
+
+        $this->genre = $filters['genre'] ?? null;
+        $this->hair = $filters['hair'] ?? null;
+        $this->height = $filters['height'] ?? null;
+        $this->origin = $filters['origin'] ?? null;
+        $this->hobby  = $filters['hobby'] ?? null;
+        $this->sign = $filters['sign'] ?? null;
+        $this->fashion_style = $filters['fashion_style'] ?? null;
+    }
+
     public function render()
     {
         $genres = [
@@ -23,8 +38,11 @@ class SuspectDetails extends Component
             Person::GENDER_MALE
         ];
 
+
+
         return view('livewire.suspect-details',
             [
+                // Populate select boxes
                 'genres' => $genres,
                 'hairs' => Suspect::HAIR,
                 'heights' => Suspect::HEIGHTS,
@@ -36,8 +54,8 @@ class SuspectDetails extends Component
         );
     }
 
-    public function updated($value, $name)
+    public function updated($key, $value)
     {
-        $this->emit('renderSearch', $name);
+        $this->emit('renderSearch', [$key, $value]);
     }
 }

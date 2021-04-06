@@ -24,13 +24,21 @@ class SuspectsSeeder extends Seeder
                 $language = $languages[array_rand($languages)];
                 $faker    = Factory::create($language);
 
-                $name = $faker->firstName() . ' ' . $faker->lastName();
+                $genre = $faker->randomElement([Person::GENDER_MALE, Person::GENDER_FEMALE]);
+
+                if ($genre === Person::GENDER_MALE) {
+                    $firstName = $faker->firstNameMale();
+                } else {
+                    $firstName = $faker->firstNameFemale();
+                }
+                
+                $name = $firstName . ' ' . $faker->lastName();
 
                 try {
                     Suspect::create(
                         [
                             'name'          => $name,
-                            'genre'         => $faker->randomElement([Person::GENDER_MALE, Person::GENDER_FEMALE]),
+                            'genre'         => $genre,
                             'hair'          => $faker->randomElement(Suspect::HAIR),
                             'height'        => $faker->randomElement(Suspect::HEIGHTS),
                             'origin'        => $origin,

@@ -131,6 +131,8 @@
       <path value="$PROJECT_DIR$/vendor/pragmarx/ia-str" />
       <path value="$PROJECT_DIR$/vendor/pragmarx/ia-arr" />
       <path value="$PROJECT_DIR$/vendor/pragmarx/coollection" />
+      <path value="$PROJECT_DIR$/vendor/laravel/telescope" />
+      <path value="$PROJECT_DIR$/vendor/fruitcake/laravel-telescope-toolbar" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />

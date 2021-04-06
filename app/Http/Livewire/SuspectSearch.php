@@ -7,20 +7,15 @@ use Livewire\Component;
 
 class SuspectSearch extends Component
 {
-    protected $listeners = ['renderSearch' => 'render'];
+    protected $listeners = ['renderSearch' => 'addFilter'];
 
-    public array $filters = [];
-
-    public function render(string $filter = null)
+    public function render()
     {
-        if ($filter !== null) {
-            $this->filters[] = $filter;
-        }
+        $suspects = [];
+        $filters = session('filters');
 
-        if (count($this->filters) > 0) {
-            $suspects = Suspect::where('hobby', $filter)->get();
-        } else {
-            $suspects = Suspect::all()->random(10);
+        if ($filters && count($filters) > 0) {
+            $suspects = Suspect::where($filters)->get();
         }
 
         $data = [
@@ -30,5 +25,20 @@ class SuspectSearch extends Component
         return view('livewire.suspect-search', $data);
     }
 
+    public function addFilter(array $filter)
+    {
+        $filters = session('filters');
 
+        if ($filters && count($filters) > 0) {
+            if ($filter[1] === '') {
+                unset($filters[$filter[0]]);
+            } else {
+                $filters[$filter[0]] = $filter[1];
+            }
+
+            session(['filters' => $filters]);
+        } else {
+            session(['filters' => [$filter[0] => $filter[1]]]);
+        }
+    }
 }
