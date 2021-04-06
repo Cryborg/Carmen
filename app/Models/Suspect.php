@@ -10,6 +10,9 @@ class Suspect extends Model
     use HasFactory;
 
     public const ORIGINS_LIST = [
+        'african' => [
+            'af',
+        ],
         'arabic' => [
             'ar_JO',
             'ar_SA',

@@ -44,6 +44,7 @@ return [
     'name' => 'Name',
     'origin' => 'Origin',
     'origins' => [
+        'african' => 'African',
         'arabic' => 'Arabic',
         'asian' => 'Asian',
         'european' => 'European',
