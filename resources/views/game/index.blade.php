@@ -13,6 +13,4 @@
             @livewire('suspect-search')
         </div>
     </div>
-
 </x-app-layout>
-

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\SuspectController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +20,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::view('/', 'dashboard')->name('dashboard');
 
     Route::get('/play', [GameController::class, 'index'])->name('play');
+
+    Route::get('/suspect/{suspect}', [SuspectController::class, 'show'])->name('suspect.show');
 });

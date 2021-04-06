@@ -41,6 +41,8 @@ return [
         'swimming' => 'Swimming',
         'tennis' => 'Tennis',
     ],
+    'issue_warrant' => 'Issue a warrant',
+    'list_header' => 'Suspects list (:count)',
     'name' => 'Name',
     'origin' => 'Origin',
     'origins' => [
@@ -57,4 +59,5 @@ return [
         'scar' => 'Scar',
         'tattoo' => 'Tattoo',
     ],
+    'too_many_results' => 'Too many results. You need to search for other clues to be able to issue an arrest warrant.',
 ];

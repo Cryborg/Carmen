@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Suspect;
 use Faker\Factory;
-use Faker\Generator;
 use Faker\Provider\Person;
 use Illuminate\Database\Seeder;
 
@@ -23,7 +22,11 @@ class SuspectsSeeder extends Seeder
             {
                 $language = $languages[array_rand($languages)];
                 $faker    = Factory::create($language);
-                $faker->addProvider(new \App\Providers\Faker\af\Person($faker));
+
+                if ($origin === 'african') {
+                    // Add the African Person provider
+                    $faker->addProvider(new \App\Providers\Faker\af\Person($faker));
+                }
 
                 $genre = $faker->randomElement([Person::GENDER_MALE, Person::GENDER_FEMALE]);
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Suspect;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class SuspectController extends Controller
 {
@@ -42,11 +43,16 @@ class SuspectController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Suspect  $suspect
-     * @return \Illuminate\Http\Response
+     *
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show(Suspect $suspect)
     {
-        //
+        return Response::json(
+            [
+                'suspect' => $suspect,
+            ]
+        );
     }
 
     /**

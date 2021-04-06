@@ -1,15 +1,23 @@
 <div>
     <div class="card mh">
         <div class="card-header">
-            @lang('suspects_list_header')
-            ({{ count($suspects) }})
+            @lang('suspect.list_header', ['count' => count($suspects)])
         </div>
-        <div class="card-body">
-            @foreach ($suspects as $suspect)
-                <div class="row">
-                    {{ $suspect->name }}
-                </div>
-            @endforeach
+        <div class="card-body p-1">
+            @if (count($suspects) >= 15)
+                @lang('suspect.too_many_results')
+            @else
+                <ul class="list-group list-group-flush">
+                    @foreach ($suspects as $suspect)
+                        <a href="#" class="list-group-item list-group-item-action" data-suspect="{{ $suspect->id }}">
+                            {{ $suspect->name }}
+                        </a>
+                    @endforeach
+                </ul>
+                @if (count($suspects) === 1)
+                    <button class="btn btn-primary">@lang('suspect.issue_warrant')</button>
+                @endif
+            @endif
         </div>
         <div class="card-footer">
 
