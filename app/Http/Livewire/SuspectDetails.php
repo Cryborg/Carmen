@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Suspect;
 use Faker\Provider\Person;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class SuspectDetails extends Component
@@ -20,7 +21,24 @@ class SuspectDetails extends Component
     {
         $filters = session('filters') ?? [];
 
-        //array_filter($filters);
+        // If there is nothing in the session, check if there is something
+        // in the database, from a previous game session.
+        if (empty($filters)) {
+            $investigation = Auth::user()->investigation;
+
+            if ($investigation) {
+                $filters = array_filter([
+                    'genre' => $investigation->genre,
+                    'hair' => $investigation->hair,
+                    'height' => $investigation->height,
+                    'origin' => $investigation->origin,
+                    'hobby' => $investigation->hobby,
+                    'sign' => $investigation->sign,
+                    'fashion_style' => $investigation->fashion_style,
+                ]);
+                session(['filters' => $filters]);
+            }
+        }
 
         $this->genre = $filters['genre'] ?? null;
         $this->hair = $filters['hair'] ?? null;

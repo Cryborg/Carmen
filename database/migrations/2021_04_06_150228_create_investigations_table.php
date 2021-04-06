@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWarrantsTable extends Migration
+class CreateInvestigationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateWarrantsTable extends Migration
      */
     public function up()
     {
-        Schema::create('warrants', function (Blueprint $table) {
+        Schema::create('investigations', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('user_id');
+
+            $table->foreignId('suspect_id');
 
             $table->string('name')->nullable();
             $table->string('genre')->nullable();
@@ -28,6 +30,7 @@ class CreateWarrantsTable extends Migration
             $table->string('fashion_style')->nullable();
 
             $table->timestamps();
+            $table->softDeletes('case_closed_at');
         });
     }
 
@@ -38,6 +41,6 @@ class CreateWarrantsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('warrants');
+        Schema::dropIfExists('investigations');
     }
 }

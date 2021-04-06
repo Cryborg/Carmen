@@ -5,5 +5,9 @@
         </h2>
     </x-slot>
 
-    <x-jet-welcome />
+    @if (Auth::user()->investigation)
+        <a href="/play">@lang('investigation.in_progress')</a>
+    @else
+        @livewire('new-investigation')
+    @endif
 </x-app-layout>
