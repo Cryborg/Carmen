@@ -59,5 +59,6 @@ return [
         'scar' => 'Scar',
         'tattoo' => 'Tattoo',
     ],
+    'title' => 'Suspect',
     'too_many_results' => 'Too many results. You need to search for other clues to be able to issue an arrest warrant.',
 ];

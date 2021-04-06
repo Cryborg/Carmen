@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Bases\ControllerBase;
 use App\Models\Employee;
 use Illuminate\Http\Request;
 
-class EmployeeController extends Controller
+class EmployeeController extends ControllerBase
 {
     /**
      * Display a listing of the resource.

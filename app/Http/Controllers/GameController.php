@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Bases\ControllerBase;
 use Illuminate\Support\Facades\Response;
 use PragmaRX\Countries\Package\Countries;
 
-class GameController extends Controller
+class GameController extends ControllerBase
 {
     public function index(): \Illuminate\Http\Response
     {

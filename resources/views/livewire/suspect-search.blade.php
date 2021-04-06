@@ -1,6 +1,6 @@
 <div>
     <div class="card mh">
-        <div class="card-header">
+        <div class="card-header text-center font-weight-bold">
             @lang('suspect.list_header', ['count' => count($suspects)])
         </div>
         <div class="card-body p-1">
@@ -15,16 +15,15 @@
                             </a>
                         @endforeach
                     </ul>
-                    @if (count($suspects) === 1)
-                        <button class="btn btn-primary" wire:click="checkWarrant({{ $suspect->id }})">@lang('suspect.issue_warrant')</button>
-                    @endif
                 @endif
             @else
                 Bravo !
             @endif
         </div>
-        <div class="card-footer">
-
-        </div>
+        @if (count($suspects) === 1)
+            <div class="card-footer text-center">
+                <button class="btn btn-primary" wire:click="checkWarrant({{ $suspect->id }})">@lang('suspect.issue_warrant')</button>
+            </div>
+        @endif
     </div>
 </div>

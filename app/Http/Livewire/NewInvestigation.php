@@ -2,11 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Bases\ComponentBase;
 use App\Models\Suspect;
-use Illuminate\Support\Facades\Auth;
-use Livewire\Component;
 
-class NewInvestigation extends Component
+class NewInvestigation extends ComponentBase
 {
     public function render()
     {
@@ -18,8 +17,16 @@ class NewInvestigation extends Component
      */
     public function newInvestigation(): void
     {
-        Auth::user()->investigation()->create([
-            'suspect_id' => Suspect::inRandomOrder()->first()->id,
-        ]);
+        if (!$this->authUser->investigation) {
+            $this->authUser->investigation()
+                           ->create(
+                               [
+                                   'suspect_id' => Suspect::inRandomOrder()
+                                                          ->first()->id,
+                               ]
+                           );
+        }
+
+        redirect('/play');
     }
 }

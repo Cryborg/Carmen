@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Bases\ControllerBase;
 use App\Models\Building;
 use Illuminate\Http\Request;
 
-class BuildingController extends Controller
+class BuildingController extends ControllerBase
 {
     /**
      * Display a listing of the resource.

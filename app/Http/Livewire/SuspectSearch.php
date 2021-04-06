@@ -2,11 +2,10 @@
 
 namespace App\Http\Livewire;
 
+use App\Bases\ComponentBase;
 use App\Models\Suspect;
-use Illuminate\Support\Facades\Auth;
-use Livewire\Component;
 
-class SuspectSearch extends Component
+class SuspectSearch extends ComponentBase
 {
     protected $listeners = ['renderSearch' => 'addFilter'];
 
@@ -31,7 +30,6 @@ class SuspectSearch extends Component
     public function addFilter(array $filter)
     {
         $filters = session('filters');
-        $user = Auth::user();
 
         if ($filters && count($filters) > 0) {
             if ($filter[1] === '') {
@@ -42,8 +40,8 @@ class SuspectSearch extends Component
                 $newValue = $filter[1];
             }
 
-            $user->investigation->{$filter[0]} = $newValue;
-            $user->investigation->save();
+            $this->authUser->investigation->{$filter[0]} = $newValue;
+            $this->authUser->investigation->save();
             session(['filters' => $filters]);
         } else {
             session(['filters' => [$filter[0] => $filter[1]]]);
@@ -52,10 +50,10 @@ class SuspectSearch extends Component
 
     public function checkWarrant(Suspect $suspect)
     {
-        $this->caseClosed = $suspect->id === Auth::user()->investigation->suspect->id;
+        $this->caseClosed = $suspect->id === $this->authUser->investigation->suspect->id;
 
         if ($this->caseClosed) {
-            Auth::user()->investigation->delete();
+            $this->authUser->investigation->delete();
         }
     }
 }

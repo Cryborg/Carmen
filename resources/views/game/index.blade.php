@@ -6,10 +6,19 @@
     </x-slot>
 
     <div class="row">
-        <div class="col-3">
-            @livewire('suspect-details')
+        <div class="col-9 shadow">
+
         </div>
-        <div class="col-3">
+        <div class="col-3 shadow">
+            <div class="card">
+                <div class="card-header text-center font-weight-bold">
+                    @lang('suspect.title')
+                </div>
+                <div class="card-body">
+                    @livewire('suspect-details')
+                </div>
+            </div>
+
             @livewire('suspect-search')
         </div>
     </div>

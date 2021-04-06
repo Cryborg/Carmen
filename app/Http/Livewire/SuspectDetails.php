@@ -2,12 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use App\Bases\ComponentBase;
 use App\Models\Suspect;
 use Faker\Provider\Person;
 use Illuminate\Support\Facades\Auth;
-use Livewire\Component;
 
-class SuspectDetails extends Component
+class SuspectDetails extends ComponentBase
 {
     public ?string $genre = null;
     public ?string $hair = null;
@@ -19,12 +19,14 @@ class SuspectDetails extends Component
 
     public function mount()
     {
+        parent::mount();
+
         $filters = session('filters') ?? [];
 
         // If there is nothing in the session, check if there is something
         // in the database, from a previous game session.
         if (empty($filters)) {
-            $investigation = Auth::user()->investigation;
+            $investigation = $this->authUser->investigation;
 
             if ($investigation) {
                 $filters = array_filter([

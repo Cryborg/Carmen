@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Bases\ControllerBase;
 use App\Models\Suspect;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 
-class SuspectController extends Controller
+class SuspectController extends ControllerBase
 {
     /**
      * Display a listing of the resource.
