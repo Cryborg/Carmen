@@ -23,12 +23,12 @@ class CreateSuspectsTable extends Migration
             $table->enum('hair', Suspect::HAIR);
             $table->enum('height', Suspect::HEIGHTS);
             $table->enum('origin', array_keys(Suspect::ORIGINS_LIST));
-            $table->enum('hobbies', Suspect::HOBBIES);
-            $table->enum('signs', Suspect::SIGNS);
+            $table->enum('hobby', Suspect::HOBBIES);
+            $table->enum('sign', Suspect::SIGNS);
             $table->enum('fashion_style', Suspect::FASHION_STYLES);
 
             $table->unique([
-                'genre', 'hair', 'height', 'origin', 'hobbies', 'signs', 'fashion_style'
+                'genre', 'hair', 'height', 'origin', 'hobby', 'sign', 'fashion_style'
             ], 'unique_suspect');
         });
     }

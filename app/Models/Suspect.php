@@ -10,10 +10,9 @@ class Suspect extends Model
     use HasFactory;
 
     public const ORIGINS_LIST = [
-        'european' => [
-            'fr_FR',
-            'en_GB',
-            'de_DE',
+        'arabic' => [
+            'ar_JO',
+            'ar_SA',
         ],
         'asian' => [
             'ja_JP',
@@ -21,9 +20,10 @@ class Suspect extends Model
             'zh_CN',
             'zh_TW',
         ],
-        'arabic' => [
-            'ar_JO',
-            'ar_SA',
+        'european' => [
+            'fr_FR',
+            'en_GB',
+            'de_DE',
         ],
         'latino' => [
             'es_ES',

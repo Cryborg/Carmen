@@ -34,8 +34,8 @@ class SuspectsSeeder extends Seeder
                             'hair'          => $faker->randomElement(Suspect::HAIR),
                             'height'        => $faker->randomElement(Suspect::HEIGHTS),
                             'origin'        => $origin,
-                            'hobbies'       => $faker->randomElement(Suspect::HOBBIES),
-                            'signs'         => $faker->randomElement(Suspect::SIGNS),
+                            'hobby'         => $faker->randomElement(Suspect::HOBBIES),
+                            'sign'          => $faker->randomElement(Suspect::SIGNS),
                             'fashion_style' => $faker->randomElement(Suspect::FASHION_STYLES),
                         ]
                     );
