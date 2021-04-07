@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\BuildingCity;
+use App\Models\City;
 use App\Models\Employee;
-use Faker\Provider\fr_FR\Person;
 use Illuminate\Database\Seeder;
 
 class EmployeeSeeder extends Seeder
@@ -17,7 +16,7 @@ class EmployeeSeeder extends Seeder
      */
     public function run()
     {
-        $cityBuildings = BuildingCity::all();
+        $cityBuildings = City::with('buildings')->get();
 
         $cityBuildings->each(
             function ($building) {

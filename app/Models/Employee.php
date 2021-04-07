@@ -13,6 +13,6 @@ class Employee extends Model
 
     public function building()
     {
-        return $this->hasOne(BuildingCity::class);
+        return $this->belongsTo(Building::class);
     }
 }

@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Building;
 use Illuminate\Database\Seeder;
-use PragmaRX\Countries\Package\Countries;
 
 class BuildingSeeder extends Seeder
 {

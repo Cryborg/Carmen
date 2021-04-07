@@ -9,7 +9,5 @@ class BuildingCity extends Model
 {
     use HasFactory;
 
-    protected $table = 'building_city';
-
     public $timestamps = false;
 }
