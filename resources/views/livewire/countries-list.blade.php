@@ -1,7 +1,7 @@
 <div>
     <select class="form-control" wire:model="selectedCountry">
         @foreach ($countries as $country)
-            <option value="{{ $country['cca3'] }}">{{ $country['name']['common'] }}</option>
+            <option value="{{ $country->id }}">{{ $country->name }}</option>
         @endforeach
     </select>
 

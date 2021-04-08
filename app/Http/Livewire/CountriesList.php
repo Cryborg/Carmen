@@ -2,9 +2,8 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Country;
 use Livewire\Component;
-use PragmaRX\Countries\Package\Countries;
-use PragmaRX\Countries\Update\Cities;
 
 class CountriesList extends Component
 {
@@ -16,11 +15,17 @@ class CountriesList extends Component
 
     public function mount()
     {
-        $this->countries = Countries::all()->toArray();
+        $countries = Country::all();
+
+        foreach ($countries as $country) {
+            $country->name = trans('countries.' . $country->cca3);
+        }
+
+        $this->countries = $countries;
         $this->cities = null;
 
         if ($this->selectedCountry !== null) {
-            $this->cities = Countries::where('cca', $this->selectedCountry)->first()->cities;
+            $this->cities = Country::find($this->selectedCountry)->cities;
         }
     }
 
