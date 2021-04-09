@@ -24,8 +24,8 @@
 
             <div class="tab-content" id="myTabContent">
                 {{-- Contacts tab content --}}
-                <div class="tab-pane show active" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
-                    @livewire('contacts-list')
+                <div class="tab-pane show p-3 active" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
+                    @livewire('countries-list')
                 </div>
 
                 {{-- Suspects tab content --}}

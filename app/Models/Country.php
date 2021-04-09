@@ -11,6 +11,16 @@ class Country extends Model
 
     public $name;
 
+    public static function boot()
+    {
+        parent::boot();
+
+        static::retrieved(function($model)
+        {
+            $model->name = trans('countries.' . $model->cca3);
+        });
+    }
+
     public function cities(): HasMany
     {
         return $this->hasMany(City::class);
