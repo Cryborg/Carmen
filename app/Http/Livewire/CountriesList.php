@@ -9,6 +9,8 @@ use Livewire\Component;
 
 class CountriesList extends Component
 {
+    protected $listeners = ['selectedCity'];
+
     public ?Collection $countries;
     public ?Collection $cities;
     public ?Collection $buildings;
@@ -23,21 +25,9 @@ class CountriesList extends Component
 
     public function mount()
     {
-        $countries = Country::all();
-
-        $this->countries = $countries;
-
-        if ($this->selectedCountry === null) {
-            $this->selectedCountry = $countries->first()->id;
-
-            $this->updatedSelectedCountry($this->selectedCountry);
-        }
-
-        if ($this->selectedCity === null) {
-            $this->selectedCity = $this->cities->first()->id;
-        }
-
-        $this->updatedSelectedCity($this->selectedCity);
+        $this->countries = Country::all()->sort();
+        $this->cities = collect();
+        $this->buildings = collect();
     }
 
     public function render()
@@ -47,17 +37,16 @@ class CountriesList extends Component
 
     public function updatedSelectedCountry(int $country)
     {
-        if (!is_null($country)) {
-            $this->cities = Country::find($country)->cities;
-
-            $this->selectedCity = $this->cities->first()->id;
-        }
+        $this->cities = Country::find($country)->cities;
+        $this->selectedCity = null;
     }
 
-    public function updatedSelectedCity($city)
+    public function selectedCity(City $city)
     {
+
         if (!is_null($city)) {
-            $this->buildings = City::find($city)->buildings;
+            $this->buildings = $city->buildings;
+            $this->selectedCity = $city->id;
         }
     }
 }

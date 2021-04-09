@@ -18,7 +18,7 @@ return [
     'AUT' => 'Autriche',
     'AZE' => 'Azerbaïdjan',
     'BDI' => 'Burundi',
-    'BEL' => 'UNTRANSLATED Belgium',
+    'BEL' => 'Belgique',
     'BEN' => 'Bénin',
     'BFA' => 'Burkina Faso',
     'BGD' => 'Bangladesh',

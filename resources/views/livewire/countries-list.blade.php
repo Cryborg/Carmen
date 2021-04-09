@@ -5,19 +5,31 @@
         @endforeach
     </select>
 
-    <select class="form-control" wire:model="selectedCity">
-        @if ($selectedCountry !== null)
+    @if ($selectedCountry !== null)
+        <div class="border border-dark">
             @foreach ($cities as $city)
-                <option value="{{ $city->id }}" @if ($selectedCity == $city->id) selected  @endif>{{ $city->name }}</option>
+                <button class="btn btn-light w-100" wire:click="$emit('selectedCity', {{ $city->id }})">
+                    {{ $city->name }}
+                </button>
             @endforeach
-        @endif
-    </select>
+        </div>
+    @endif
 
-    <select class="form-control">
-        @if ($selectedCity !== null)
+{{--    <select class="form-control" wire:model="selectedCity">--}}
+{{--        @if ($selectedCountry !== null)--}}
+{{--            @foreach ($cities as $city)--}}
+{{--                <option value="{{ $city->id }}" @if ($selectedCity == $city->id) selected  @endif>{{ $city->name }}</option>--}}
+{{--            @endforeach--}}
+{{--        @endif--}}
+{{--    </select>--}}
+
+    @if ($selectedCity !== null)
+        <div class="border border-dark">
             @foreach ($buildings as $building)
-                <option value="{{ $building->id }}">{{ $building->name }}</option>
+                <button class="btn btn-light w-100">
+                    {{ $building->name }}
+                </button>
             @endforeach
-        @endif
-    </select>
+        </div>
+    @endif
 </div>
