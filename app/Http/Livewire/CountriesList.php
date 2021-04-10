@@ -39,14 +39,15 @@ class CountriesList extends Component
     {
         $this->cities = Country::find($country)->cities;
         $this->selectedCity = null;
+        $this->emit('selectedBuilding', null);
     }
 
     public function selectedCity(City $city)
     {
-
         if (!is_null($city)) {
             $this->buildings = $city->buildings;
             $this->selectedCity = $city->id;
+            $this->emit('selectedBuilding', null);
         }
     }
 }

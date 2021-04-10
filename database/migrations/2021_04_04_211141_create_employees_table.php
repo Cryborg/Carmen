@@ -16,8 +16,6 @@ class CreateEmployeesTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
 
-            $table->string('name');
-
             $table->foreignId('building_city_id')
                 ->comment('The building the employee works in.');
         });

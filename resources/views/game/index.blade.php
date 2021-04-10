@@ -7,7 +7,7 @@
 
     <div class="row">
         <div class="col-9 shadow bg-white">
-
+            @livewire('employees-clues')
         </div>
         <div class="col-3 shadow bg-white">
             <ul class="nav nav-pills nav-fill">

@@ -15,18 +15,10 @@
         </div>
     @endif
 
-{{--    <select class="form-control" wire:model="selectedCity">--}}
-{{--        @if ($selectedCountry !== null)--}}
-{{--            @foreach ($cities as $city)--}}
-{{--                <option value="{{ $city->id }}" @if ($selectedCity == $city->id) selected  @endif>{{ $city->name }}</option>--}}
-{{--            @endforeach--}}
-{{--        @endif--}}
-{{--    </select>--}}
-
     @if ($selectedCity !== null)
         <div class="border border-dark">
             @foreach ($buildings as $building)
-                <button class="btn btn-light w-100">
+                <button class="btn btn-light w-100" wire:click="$emit('selectedBuilding', {{ $building->pivot->id }})">
                     {{ $building->name }}
                 </button>
             @endforeach

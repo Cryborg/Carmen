@@ -1,5 +1,5 @@
 <?php
 return [
     'contacts' => 'Contacts',
-    'employee' => 'Employee',
+    'employee' => 'Employé(e)',
 ];
