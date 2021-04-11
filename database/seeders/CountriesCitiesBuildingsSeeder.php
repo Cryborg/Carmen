@@ -20,11 +20,18 @@ class CountriesCitiesBuildingsSeeder extends Seeder
     {
         $countries = Countries::all();
         $allBuildings = Building::all();
-        $totalBuildings = $allBuildings->count();
 
         foreach ($countries as $country) {
-            if ($country->has('capital')) {
+            /**
+             * Don't import the country if it is not in the translations.
+             * This way I keep the database as sane as I can.
+             */
+            if (trans('countries.' . $country->cca3) === 'countries.' . $country->cca3) {
+                continue;
+            }
 
+            if ($country->has('capital'))
+            {
                 try {
                     // Save a new country
                     $newCountry = Country::create(
@@ -44,13 +51,10 @@ class CountriesCitiesBuildingsSeeder extends Seeder
 
                         if ($capital !== '') {
                             // Save a new city
-                            $newCity = $newCountry->cities()
-                                                  ->create(
-                                                      [
-                                                          'name'    => $capital,
-                                                          'capital' => true,
-                                                      ]
-                                                  );
+                            $newCity = $newCountry->cities()->create([
+                                'name'    => $capital,
+                                'capital' => true,
+                            ]);
 
                             // Attach 3 random buildings to the city
                             $buildings = $allBuildings->shuffle();

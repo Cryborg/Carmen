@@ -25,9 +25,17 @@ class CountriesList extends ComponentBase
 
     public function mount()
     {
-        $this->countries = Country::all()->sort();
+        $this->countries = Country::inRandomOrder()->limit(10)->get();
         $this->cities = collect();
         $this->buildings = collect();
+
+        // Add the next destination to the countries list, if it is not there yet
+        $investigation = $this->authUser->investigations()->first();
+        $currentCountries = Country::whereIn('cca3', [
+            $investigation->loc_current,
+            $investigation->loc_next
+        ])->get();
+        $this->countries = $this->countries->merge($currentCountries)->sort();
 
         // Place the player in the current location
         if ($this->selectedCountry === null) {
@@ -43,12 +51,22 @@ class CountriesList extends ComponentBase
     /**
      * Triggered when the $selectedCountry is changed
      *
-     * @param int $country
+     * @param int $newCountry
      */
-    public function updatedSelectedCountry(int $country)
+    public function updatedSelectedCountry(int $newCountry)
     {
-        $this->cities = Country::find($country)->cities;
+        $country = Country::find($newCountry);
+        $this->cities = $country->cities;
         $this->selectedCity = null;
+
+        // Save the new location...
+        $investigation = $this->authUser->investigations->first();
+        $investigation->loc_current = $country->cca3;
+
+        // ...and find a new one
+        $investigation->loc_next = Country::inRandomOrder()->limit(1)->first()->cca3;
+        $investigation->save();
+
         $this->emit('selectedBuilding', null);
     }
 
