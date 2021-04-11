@@ -59,8 +59,8 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function investigation()
+    public function investigations()
     {
-        return $this->hasOne(Investigation::class);
+        return $this->hasMany(Investigation::class);
     }
 }

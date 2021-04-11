@@ -17,8 +17,8 @@ class NewInvestigation extends ComponentBase
      */
     public function newInvestigation(): void
     {
-        if (!$this->authUser->investigation) {
-            $this->authUser->investigation()
+        if (!$this->authUser->investigations->first()) {
+            $this->authUser->investigations()
                            ->create(
                                [
                                    'suspect_id' => Suspect::inRandomOrder()
@@ -26,6 +26,9 @@ class NewInvestigation extends ComponentBase
                                ]
                            );
         }
+
+        // Forget data from previous game
+        session()->forget('filters');
 
         redirect('/play');
     }

@@ -22,7 +22,7 @@
         </div>
         @if (count($suspects) === 1)
             <div class="card-footer text-center">
-                <button class="btn btn-primary" wire:click="checkWarrant({{ $suspect->id }})">@lang('suspect.issue_warrant')</button>
+                <button class="btn btn-primary" wire:click="checkWarrant({{ $suspects->first()->id }})">@lang('suspect.issue_warrant')</button>
             </div>
         @endif
     </div>

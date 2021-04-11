@@ -2,9 +2,10 @@
 
 return [
     'airport'        => 'Aéroport',
+    'bank'           => 'Banque',
+    'fitness_center' => 'Salle de sport',
     'hotel'          => 'Hôtel',
+    'internet_cafe'  => 'Cybercafé',
     'market'         => 'Marché',
-    'museum'         => 'Musée',
-    'police-station' => 'Commissariat',
-    'town-hall'      => 'Mairie',
+    'restaurant'     => 'Restaurant',
 ];

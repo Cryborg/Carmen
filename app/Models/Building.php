@@ -11,6 +11,10 @@ class Building extends Model
 
     public $timestamps = false;
 
+    protected $casts = [
+        'clues' => 'array',
+    ];
+
     public string $name;
 
     public static function boot()

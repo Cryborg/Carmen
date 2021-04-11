@@ -15,18 +15,33 @@ class BuildingSeeder extends Seeder
     public function run()
     {
         $buildings = [
-            'town-hall',
-            'airport',
-            'hotel',
-            'market',
-            'museum',
-            'police-station',
+            'airport' => [
+                'destination', 'origin', 'sign',
+            ],
+            'bank' => [
+                'currency', 'fashion_style',
+            ],
+            'fitness_center' => [
+                'hobby', 'sign', 'hair', 'height',
+            ],
+            'hotel' => [
+                'currency', 'destination', 'origin',
+            ],
+            'internet_cafe' => [
+                'hobby', 'currency', 'destination',
+            ],
+            'restaurant' => [
+                'fashion_style', 'hair', 'sign', 'height',
+            ],
         ];
 
-        foreach ($buildings as $building) {
+        foreach ($buildings as $building => $clues) {
             Building::create([
                 'slug' => $building,
+                'clues' => $clues,
             ]);
         }
+
+        // TODO: Peut-être rajouter les monuments historiques ?
     }
 }

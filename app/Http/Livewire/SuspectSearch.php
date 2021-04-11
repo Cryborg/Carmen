@@ -29,6 +29,8 @@ class SuspectSearch extends ComponentBase
 
     public function addFilter(array $filter)
     {
+        $investigation = $this->authUser->investigations->first();
+
         $filters = session('filters');
 
         if ($filters && count($filters) > 0) {
@@ -40,8 +42,8 @@ class SuspectSearch extends ComponentBase
                 $newValue = $filter[1];
             }
 
-            $this->authUser->investigation->{$filter[0]} = $newValue;
-            $this->authUser->investigation->save();
+            $investigation->{$filter[0]} = $newValue;
+            $investigation->save();
             session(['filters' => $filters]);
         } else {
             session(['filters' => [$filter[0] => $filter[1]]]);
@@ -50,10 +52,12 @@ class SuspectSearch extends ComponentBase
 
     public function checkWarrant(Suspect $suspect)
     {
-        $this->caseClosed = $suspect->id === $this->authUser->investigation->suspect->id;
+        $investigation = $this->authUser->investigations->first();
+
+        $this->caseClosed = $suspect->id === $investigation->suspect->id;
 
         if ($this->caseClosed) {
-            $this->authUser->investigation->delete();
+            $investigation->delete();
         }
     }
 }

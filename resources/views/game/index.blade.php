@@ -1,10 +1,4 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="h4 font-weight-bold">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
     <div class="row">
         <div class="col-9 shadow bg-white">
             @livewire('employees-clues')
@@ -44,4 +38,6 @@
             </div>
         </div>
     </div>
+    @dump($authUser->investigations->first()->suspect)
+
 </x-app-layout>

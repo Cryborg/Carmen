@@ -26,7 +26,7 @@ class SuspectDetails extends ComponentBase
         // If there is nothing in the session, check if there is something
         // in the database, from a previous game session.
         if (empty($filters)) {
-            $investigation = $this->authUser->investigation;
+            $investigation = $this->authUser->investigations->first();
 
             if ($investigation) {
                 $filters = array_filter([

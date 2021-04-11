@@ -48,21 +48,14 @@ class CountriesCitiesBuildingsSeeder extends Seeder
                             ]
                         );
 
-                        // Attach buildings to the city
-                        $randomNbBuildings = random_int(3, 5);
+                        // Attach 3 random buildings to the city
                         $buildings = $allBuildings->shuffle();
 
-                        for ($i = 1; $i <= $randomNbBuildings; $i++) {
+                        for ($i = 1; $i <= 3; $i++) {
                             $newCity->buildings()->attach($buildings->shift());
                         }
-                    } else {
-                        dump($country->name->common . ' => Capital is NULL');
                     }
-                } else {
-                    dump($country->name->common . ' => (string) Capital is ' . $country->capital);
                 }
-            } else {
-                dump($country->name->common . ' => Has no capital');
             }
         }
     }
