@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Classes\TextModifier;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -55,11 +56,12 @@ class Employee extends Model
      * Returns a random clue, taking into account the subject configured
      * for the employee building
      *
-     * @param \App\Models\Employee $model
+     * @param \App\Models\Investigation $investigation
+     * @param \App\Models\Employee      $model
      *
      * @return string
      */
-    public function getClueDialog(Investigation $investigation, Employee $model)
+    public function getClueDialog(Investigation $investigation, Employee $model): string
     {
         $clues = $model->building->clues;
         $suspect = $investigation->suspect;
@@ -74,7 +76,7 @@ class Employee extends Model
             $translations = $clue;
         }
 
-        return $translations[array_rand($translations)];
+        return TextModifier::getModifiedText($translations[array_rand($translations)], $suspect);
     }
 
     public function building(): HasOneThrough
