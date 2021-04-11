@@ -17,6 +17,8 @@ class CreateCountriesTable extends Migration
             $table->id();
 
             $table->string('cca3');
+            $table->string('currency');
+            $table->string('flag');
         });
     }
 
