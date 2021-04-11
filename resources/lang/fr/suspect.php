@@ -2,12 +2,12 @@
 return [
     'fashion_style' => 'Style',
     'fashion_styles' => [
-        'casual' => 'Casual',
+        'casual' => 'Décontracté',
         'chic' => 'Chic',
-        'gothic' => 'Gothic',
+        'gothic' => 'Gothique',
         'punk' => 'Punk',
         'sexy' => 'Sexy',
-        'sporty' => 'Sporty',
+        'sporty' => 'Sport',
         'vintage' => 'Vintage',
     ],
     'genre' => 'Genre',

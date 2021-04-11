@@ -23,7 +23,7 @@ return [
     'origin' => [
         'Son accent :origin était très mignon.',
         'genre[Il|Elle] avait un accent :origin très léger.',
-        'J\'ai eu du mal à comprendre ce qu\'genre[Il|Elle] disait avec son accent :origin très prononcé.',
+        'J\'ai eu du mal à comprendre ce qu\'genre[il|elle] disait avec son accent :origin très prononcé.',
     ],
     'hobby' => [
         'baseball' => [
@@ -79,39 +79,38 @@ return [
     ],
     'fashion_style' => [
         'casual' => [
-            'casual style',
-            'casual style 2',
+            'genre[Il|Elle] portait un jean et un tshirt avec un lapin dessiné dessus.',
         ],
         'chic' => [
-            'chic style',
-            'chic style 2',
+            'genre[Il|Elle] était habillée avec classe !',
+            'Sa tenue était très classe, on aurait dit qu\'elle allait assister à un dîner dans la haute bourgoisie.',
         ],
         'gothic' => [
-            'gothic style',
-            'gothic style 2',
+            'genre[Il|Elle] était genre[maquillé|maquillée] tout en noir et ses vêtements l\'étaient tout autant.',
+            'Je me suis dit que je n\'étais décidément pas fan de son style gothique.',
         ],
         'punk' => [
-            'punk style',
-            'punk style 2',
+            'genre[Il|Elle] arborait une crête qui était loin de laisser indifférent quand on la croisait.',
+            'Les clients se retournaient sur genre[lui|elle], peu habitués à croiser quelqu\'un avec un style punk si marqué.',
         ],
         'sexy' => [
-            'sexy style',
-            'sexy style 2',
+            'genre[Il|Elle] ne laissait pas indifférent, tant son sex-appeal était remarquable.',
+            'genre[Les femmes|Les hommes] se retournaient sur son passage tellement genre[il|elle] était genre[habillé|habillée] sexy.',
         ],
         'sporty' => [
-            'sporty style',
-            'sporty style 2',
+            'Je ne l\'ai jamais genre[vu habillé|vue habillée] autrement qu\'en jogging.',
+            'Toute sa tenue était étudiée autour de ses baskets qu\'genre[il|elle] ne quittait jamais.',
         ],
         'vintage' => [
-            'vintage style',
-            'vintage style 2',
+            'Je croyais qu\'genre[il|elle] allait tourner dans un film se passant dans les années 20 tant sa tenue semblait appartenir à cette époque.',
+            'Son style un peu vieillot contrastait avec son langage plutôt imagé...',
         ],
     ],
     'destination' => [
-        'Il allait par là',
-        'Il allait par ici',
+        'genre[Il|Elle] allait par là',
+        'genre[Il|Elle] allait par ici',
     ],
     'currency' => [
-        'Il a échangé sa monnaie contre des dollars',
+        'genre[Il|Elle]  a échangé sa monnaie contre des dollars',
     ],
 ];
