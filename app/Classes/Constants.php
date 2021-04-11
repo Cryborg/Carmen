@@ -7,7 +7,9 @@ class Constants
     public const GENRE_FEMALE = 'female';
     public const GENRE_MALE   = 'male';
 
-    const        METHODS_LIST = [
+    public const METHODS_LIST = [
+        'currency',
+        'destination',
         'genre',
     ];
 }

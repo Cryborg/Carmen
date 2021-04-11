@@ -1,6 +1,6 @@
 <div>
     <div class="row">
-        <div class="col">@lang('suspect.genre')</div>
+        <div class="col-5">@lang('suspect.genre')</div>
         <div class="col">
             <select class="form-control" name="genre" wire:model="genre">
                 <option value=""></option>
@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">@lang('suspect.hair')</div>
+        <div class="col-5">@lang('suspect.hair')</div>
         <div class="col">
             <select class="form-control" name="hair" wire:model="hair">
                 <option value=""></option>
@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">@lang('suspect.height')</div>
+        <div class="col-5">@lang('suspect.height')</div>
         <div class="col">
             <select class="form-control" name="height" wire:model="height">
                 <option value=""></option>
@@ -33,7 +33,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">@lang('suspect.origin')</div>
+        <div class="col-5">@lang('suspect.origin')</div>
         <div class="col">
             <select class="form-control" name="origin" wire:model="origin">
                 <option value=""></option>
@@ -44,7 +44,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">@lang('suspect.hobby')</div>
+        <div class="col-5">@lang('suspect.hobby')</div>
         <div class="col">
             <select class="form-control" name="hobby" wire:model="hobby">
                 <option value=""></option>
@@ -55,7 +55,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">@lang('suspect.sign')</div>
+        <div class="col-5">@lang('suspect.sign')</div>
         <div class="col">
             <select class="form-control" name="sign" wire:model="sign">
                 <option value=""></option>
@@ -66,7 +66,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col">@lang('suspect.fashion_style')</div>
+        <div class="col-5">@lang('suspect.fashion_style')</div>
         <div class="col">
             <select class="form-control" name="fashion_style" wire:model="fashion_style">
                 <option value=""></option>

@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
 use PragmaRX\Countries\Package\Countries;
 
 class GenerateCountriesTranslations extends Command

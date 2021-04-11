@@ -52,7 +52,7 @@ return [
         'european' => 'Européenne',
         'latino' => 'Latino'
     ],
-    'sign' => 'Signe',
+    'sign' => 'Apparence',
     'signs' => [
         'earring' => 'Boucles d\'oreille',
         'piercing' => 'Piercing',

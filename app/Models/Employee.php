@@ -63,6 +63,12 @@ class Employee extends Model
      */
     public function getClueDialog(Investigation $investigation, Employee $model): string
     {
+        // Check if the player is in the right country
+        $actualLocation = $model->city->country->cca3;
+        if ($actualLocation !== $investigation->loc_current && $actualLocation !== $investigation->loc_next) {
+            return 'T\'es pas au bon endroit mec !';
+        }
+
         $clues = $model->building->clues;
         $suspect = $investigation->suspect;
 
@@ -76,7 +82,7 @@ class Employee extends Model
             $translations = $clue;
         }
 
-        return TextModifier::getModifiedText($translations[array_rand($translations)], $suspect);
+        return TextModifier::getModifiedText($translations[array_rand($translations)], $investigation);
     }
 
     public function building(): HasOneThrough

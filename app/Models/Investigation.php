@@ -16,7 +16,13 @@ class Investigation extends Model
     public const DELETED_AT = 'case_closed_at';
 
     protected $fillable = [
-        'suspect_id'
+        'suspect_id',
+        'loc_current',
+        'loc_next',
+    ];
+
+    protected $casts = [
+        'loc_previous' => 'array',
     ];
 
     public function conversations(): HasMany

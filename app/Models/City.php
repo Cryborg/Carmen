@@ -12,4 +12,9 @@ class City extends Model
     {
         return $this->belongsToMany(Building::class)->withPivot('id');
     }
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
 }

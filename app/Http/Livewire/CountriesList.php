@@ -2,12 +2,12 @@
 
 namespace App\Http\Livewire;
 
+use App\Bases\ComponentBase;
 use App\Models\City;
 use App\Models\Country;
 use Illuminate\Support\Collection;
-use Livewire\Component;
 
-class CountriesList extends Component
+class CountriesList extends ComponentBase
 {
     protected $listeners = ['selectedCity'];
 
@@ -28,13 +28,23 @@ class CountriesList extends Component
         $this->countries = Country::all()->sort();
         $this->cities = collect();
         $this->buildings = collect();
+
+        // Place the player in the current location
+        if ($this->selectedCountry === null) {
+            $currentLocation       = $this->authUser->investigations->first()->loc_current;
+            $currentCountry        = Country::where('cca3', $currentLocation)->first();
+            $this->selectedCountry = $currentCountry->id;
+        }
+
+        // Load the cities so that they are displayed
+        $this->cities = Country::find($this->selectedCountry)->cities;
     }
 
-    public function render()
-    {
-        return view('livewire.countries-list');
-    }
-
+    /**
+     * Triggered when the $selectedCountry is changed
+     *
+     * @param int $country
+     */
     public function updatedSelectedCountry(int $country)
     {
         $this->cities = Country::find($country)->cities;
@@ -42,6 +52,11 @@ class CountriesList extends Component
         $this->emit('selectedBuilding', null);
     }
 
+    /**
+     * Triggered when the $selectedCity is changed
+     *
+     * @param \App\Models\City $city
+     */
     public function selectedCity(City $city)
     {
         if (!is_null($city)) {
@@ -49,5 +64,10 @@ class CountriesList extends Component
             $this->selectedCity = $city->id;
             $this->emit('selectedBuilding', null);
         }
+    }
+
+    public function render()
+    {
+        return view('livewire.countries-list');
     }
 }

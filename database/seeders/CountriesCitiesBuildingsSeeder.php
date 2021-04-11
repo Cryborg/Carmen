@@ -30,7 +30,7 @@ class CountriesCitiesBuildingsSeeder extends Seeder
                     $newCountry = Country::create(
                         [
                             'cca3'     => $country->cca3,
-                            'currency' => $country->hydrate('currencies')->currencies->first()->units->major->name,
+                            'currency' => strtolower($country->hydrate('currencies')->currencies->first()->units->major->name),
                             'flag'     => $country->flag->flag_icon,
                         ]
                     );

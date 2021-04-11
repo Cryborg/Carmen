@@ -19,7 +19,14 @@ class CreateInvestigationsTable extends Migration
             $table->foreignId('user_id');
 
             $table->foreignId('suspect_id');
+            $table->json('loc_previous')->nullable()
+                ->comment('Already visited locations.');
+            $table->string('loc_current')
+                ->comment('Current location the player is in.');
+            $table->string('loc_next')
+                ->comment('Next location the player has to go to.');
 
+            // Warrant data
             $table->string('name')->nullable();
             $table->string('genre')->nullable();
             $table->string('hair')->nullable();

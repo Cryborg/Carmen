@@ -3,10 +3,10 @@
         @foreach ($buildingEmployees as $employee)
             <div class="card">
                 <div class="card-header">
-                    {{ $employee->name }} (#{{ $employee->id }})
+                    {{ $employee->name }}
                 </div>
                 <div class="card-body">
-                    {{ $employee->dialog }}
+                    {!! $employee->dialog !!}
                 </div>
             </div>
         @endforeach
