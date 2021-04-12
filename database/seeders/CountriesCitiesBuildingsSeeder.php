@@ -5,8 +5,6 @@ namespace Database\Seeders;
 use App\Models\Building;
 use App\Models\Country;
 use Illuminate\Database\Seeder;
-use PragmaRX\Countries\Package\Countries;
-use PragmaRX\Countries\Package\Support\Collection;
 
 class CountriesCitiesBuildingsSeeder extends Seeder
 {
@@ -18,41 +16,34 @@ class CountriesCitiesBuildingsSeeder extends Seeder
      */
     public function run()
     {
-        $countries = Countries::all();
+        $countries = countries();
         $allBuildings = Building::all();
 
-        foreach ($countries as $country) {
+        foreach ($countries as $alpha2 => $values) {
+            $country = country($alpha2);
+
             /**
              * Don't import the country if it is not in the translations.
              * This way I keep the database as sane as I can.
              */
-            if (trans('countries.' . $country->cca3) === 'countries.' . $country->cca3) {
+            if (trans('countries.' . $country->getIsoAlpha2()) === 'countries.' . $country->getIsoAlpha2()) {
                 continue;
             }
 
-            if ($country->has('capital'))
+            if ($country->getCapital())
             {
                 try {
                     // Save a new country
                     $newCountry = Country::create(
                         [
-                            'cca3'     => $country->cca3,
-                            'currency' => strtolower($country->hydrate('currencies')->currencies->first()->units->major->name),
-                            'flag'     => $country->flag->flag_icon,
+                            'cca2'     => $country->getIsoAlpha2(),
                         ]
                     );
 
-                    if ($country->capital instanceof Collection) {
-                        $capital = $country->capital->first();
-
-                        if ($capital instanceof Collection && count($capital) === 0) {
-                            continue;
-                        }
-
-                        if ($capital !== '') {
+                        if ($country->getCapital() !== '') {
                             // Save a new city
                             $newCity = $newCountry->cities()->create([
-                                'name'    => $capital,
+                                'name'    => $country->getCapital(),
                                 'capital' => true,
                             ]);
 
@@ -63,8 +54,10 @@ class CountriesCitiesBuildingsSeeder extends Seeder
                                 $newCity->buildings()
                                         ->attach($buildings->shift());
                             }
+                        } else {
+                            dump('no capital');
                         }
-                    }
+
                 } catch (\Exception $e) {
                     dump($e->getMessage());
                 }

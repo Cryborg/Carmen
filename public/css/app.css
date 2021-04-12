@@ -10308,6 +10308,11 @@ h3 {
   font-size: 0.875rem !important;
 }
 
+.flag svg {
+  width: 100px;
+  height: 50px;
+}
+
 .flag-icon-background, .flag-icon {
   background-size: contain;
   background-position: 50%;

@@ -32,7 +32,7 @@ class CountriesList extends ComponentBase
 
         // Add the next destination to the countries list, if it is not there yet
         $investigation = $this->authUser->investigations()->firstOrFail();
-        $currentCountries = Country::whereIn('cca3', [
+        $currentCountries = Country::whereIn('cca2', [
             $investigation->loc_current,
             $investigation->loc_next
         ])->get();
@@ -41,7 +41,7 @@ class CountriesList extends ComponentBase
         // Place the player in the current location
         if ($this->selectedCountry === null) {
             $currentLocation       = $this->authUser->investigations->first()->loc_current;
-            $currentCountry        = Country::where('cca3', $currentLocation)->first();
+            $currentCountry        = Country::where('cca2', $currentLocation)->first();
             $this->selectedCountry = $currentCountry->id;
         }
 
@@ -62,15 +62,15 @@ class CountriesList extends ComponentBase
 
         // Save the new location...
         $investigation = $this->authUser->investigations->first();
-        $investigation->loc_current = $country->cca3;
+        $investigation->loc_current = $country->cca2;
 
         // ...and find a new one
-        $investigation->loc_next = Country::inRandomOrder()->limit(1)->first()->cca3;
+        $investigation->loc_next = Country::inRandomOrder()->limit(1)->first()->cca2;
         $investigation->save();
 
         // Refresh the list of available destinations...
         $countries = Country::inRandomOrder()->limit(self::NB_DESTINATIONS)->get();
-        $currentCountries = Country::whereIn('cca3', [
+        $currentCountries = Country::whereIn('cca2', [
             $investigation->loc_current,
             $investigation->loc_next
         ])->get();

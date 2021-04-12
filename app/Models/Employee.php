@@ -64,7 +64,7 @@ class Employee extends Model
     public function getClueDialog(Investigation $investigation, Employee $model): string
     {
         // Check if the player is in the right country
-        $actualLocation = $model->city->country->cca3;
+        $actualLocation = $model->city->country->cca2;
         if ($actualLocation !== $investigation->loc_current && $actualLocation !== $investigation->loc_next) {
             return 'T\'es pas au bon endroit mec !';
         }

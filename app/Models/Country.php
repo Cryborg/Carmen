@@ -17,7 +17,7 @@ class Country extends Model
 
         static::retrieved(function($model)
         {
-            $model->name = trans('countries.' . $model->cca3);
+            $model->name = trans('countries.' . $model->cca2);
         });
     }
 

@@ -20,15 +20,15 @@ class NewInvestigation extends ComponentBase
     {
         if (!$this->authUser->investigations->first()) {
             // Pick up 2 random countries: one to start in, the other for the next destination
-            $countries = Country::inRandomOrder()->limit(2)->get('cca3');
+            $countries = Country::inRandomOrder()->limit(2)->get('cca2');
 
             // Create the investigation
             $this->authUser->investigations()
                            ->create(
                                [
                                    'suspect_id' => Suspect::inRandomOrder()->first()->id,
-                                   'loc_current' => $countries->first()->cca3,
-                                   'loc_next' => $countries->last()->cca3,
+                                   'loc_current' => $countries->first()->cca2,
+                                   'loc_next' => $countries->last()->cca2,
                                ]
                            );
         }

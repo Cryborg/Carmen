@@ -110,7 +110,7 @@ return [
         'genre[Il|Elle] m\'a montré un livre de voyage avec ce drapeau sur la couverture : destination[flag]',
     ],
     'currency' => [
-        'genre[Il|Elle] a échangé sa monnaie contre des currency[]',
+        'genre[Il|Elle] a échangé sa monnaie contre des currency[].',
         'genre[Il|Elle] m\'a donné 1 currency[] de pourboire, prétextant qu\'genre[il|elle] ne lui restait plus de notre monnaie après être genre[passé|passée] au bureau de change.',
     ],
 ];

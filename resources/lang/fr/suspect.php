@@ -36,7 +36,7 @@ return [
         'football' => 'Football',
         'matchstick' => 'Construction en allumettes',
         'music' => 'Musique',
-        'pets' => 'ANimaux',
+        'pets' => 'Animaux',
         'postcards' => 'Cartes postales',
         'swimming' => 'Natation',
         'tennis' => 'Tennis',

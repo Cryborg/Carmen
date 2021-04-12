@@ -64,9 +64,7 @@ class TextModifier
         if ($text === 'flag') {
             $nextDestination = $investigation->loc_next;
 
-            return Country::where('cca3', $nextDestination)
-                          ->first()
-                          ->flag;
+            return '<div class="flag">' . country($nextDestination)->getFlag() . '</div>';
         }
         return $text;
     }
@@ -75,10 +73,6 @@ class TextModifier
     {
         $nextDestination = $investigation->loc_next;
 
-        return Country::where('cca3', $nextDestination)
-                      ->first()
-                      ->currency;
-
-        return $text;
+        return country($nextDestination)->getCurrency()['iso_4217_name'];
     }
 }
