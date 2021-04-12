@@ -66,7 +66,8 @@ class Employee extends Model
         // Check if the player is in the right country
         $actualLocation = $model->city->country->cca2;
         if ($actualLocation !== $investigation->loc_current && $actualLocation !== $investigation->loc_next) {
-            return 'T\'es pas au bon endroit mec !';
+            $translations = trans('clues.wrong_place');
+            return $translations[array_rand($translations)];
         }
 
         $clues = $model->building->clues;

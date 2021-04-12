@@ -122,4 +122,10 @@ return [
         'genre[Il|Elle] a échangé sa monnaie contre des currency[].',
         'genre[Il|Elle] m\'a donné 1 currency[] de pourboire, prétextant qu\'genre[il|elle] ne lui restait plus de notre monnaie après être genre[passé|passée] au bureau de change.',
     ],
+
+    'wrong_place' => [
+        'Désolé, je n\'ai vu personne de louche aujourd\'hui',
+        'Vous avez dû vous tromper, je n\'ai vu personne de louche aujourd\'hui',
+        'Je pense que vous vous êtes trompé, aucune personne ne correspondant à cette description n\'est passé par ici.',
+    ],
 ];

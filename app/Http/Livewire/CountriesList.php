@@ -60,23 +60,30 @@ class CountriesList extends ComponentBase
         $this->cities = $country->cities;
         $this->selectedCity = null;
 
-        // Save the new location...
         $investigation = $this->authUser->investigations->first();
-        $investigation->loc_current = $country->cca2;
+        $actualLocation = $country->cca2;
 
-        // ...and find a new one
-        $investigation->loc_next = Country::inRandomOrder()->limit(1)->first()->cca2;
-        $investigation->save();
+        if ($actualLocation === $investigation->loc_next) {
+            // Save the new location...
+            $investigation->loc_current = $country->cca2;
 
-        // Refresh the list of available destinations...
-        $countries = Country::inRandomOrder()->limit(self::NB_DESTINATIONS)->get();
-        $currentCountries = Country::whereIn('cca2', [
-            $investigation->loc_current,
-            $investigation->loc_next
-        ])->get();
+            // ...and find a new one
+            $investigation->loc_next = Country::inRandomOrder()->limit(1)->first()->cca2;
+            $investigation->save();
 
-        // ...and add the current one, and the next one.
-        $this->countries = $countries->merge($currentCountries)->sort();
+            // Refresh the list of available destinations...
+            $countries = Country::inRandomOrder()->limit(self::NB_DESTINATIONS)->get();
+            $currentCountries = Country::whereIn(
+                'cca2',
+                [
+                    $investigation->loc_current,
+                    $investigation->loc_next
+                ]
+            )->get();
+
+            // ...and add the current one, and the next one.
+            $this->countries = $countries->merge($currentCountries)->sort();
+        }
 
         $this->emit('selectedBuilding', null);
     }
