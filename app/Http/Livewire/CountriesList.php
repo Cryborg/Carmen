@@ -10,6 +10,7 @@ use Illuminate\Support\Collection;
 class CountriesList extends ComponentBase
 {
     protected $listeners = ['selectedCity'];
+    protected const NB_DESTINATIONS = 4;
 
     public ?Collection $countries;
     public ?Collection $cities;
@@ -25,12 +26,12 @@ class CountriesList extends ComponentBase
 
     public function mount()
     {
-        $this->countries = Country::inRandomOrder()->limit(10)->get();
+        $this->countries = Country::inRandomOrder()->limit(self::NB_DESTINATIONS)->get();
         $this->cities = collect();
         $this->buildings = collect();
 
         // Add the next destination to the countries list, if it is not there yet
-        $investigation = $this->authUser->investigations()->first();
+        $investigation = $this->authUser->investigations()->firstOrFail();
         $currentCountries = Country::whereIn('cca3', [
             $investigation->loc_current,
             $investigation->loc_next
@@ -66,6 +67,16 @@ class CountriesList extends ComponentBase
         // ...and find a new one
         $investigation->loc_next = Country::inRandomOrder()->limit(1)->first()->cca3;
         $investigation->save();
+
+        // Refresh the list of available destinations...
+        $countries = Country::inRandomOrder()->limit(self::NB_DESTINATIONS)->get();
+        $currentCountries = Country::whereIn('cca3', [
+            $investigation->loc_current,
+            $investigation->loc_next
+        ])->get();
+
+        // ...and add the current one, and the next one.
+        $this->countries = $countries->merge($currentCountries)->sort();
 
         $this->emit('selectedBuilding', null);
     }
