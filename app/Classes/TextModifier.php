@@ -16,7 +16,7 @@ class TextModifier
             foreach ($matches as $match) {
                 $pos = strpos($text, $match[0]);
                 if ($pos !== false) {
-                    $text = substr_replace($text, self::$method($match[1], $investigation), $pos, strlen($match[0]));
+                    $text = substr_replace($text, self::$method($investigation, $match[1]), $pos, strlen($match[0]));
                 }
             }
         }
@@ -32,7 +32,7 @@ class TextModifier
      *
      * @return string
      */
-    public static function genre($text, $investigation): string
+    public static function genre($investigation, $text): string
     {
         $split = explode('|', $text);
 
@@ -55,21 +55,23 @@ class TextModifier
      * Gives clues about the next destination.
      *
      * @param $text
-     * @param $suspect
+     * @param $investigation
      *
      * @return mixed
      */
-    public static function destination($text, $investigation)
+    public static function destination($investigation, $text): string
     {
         if ($text === 'flag') {
             $nextDestination = $investigation->loc_next;
 
-            return '<div class="flag">' . country($nextDestination)->getFlag() . '</div>';
+            return '<div class="flag">'
+                   . country($nextDestination)->getFlag()
+                   . '</div>';
         }
         return $text;
     }
 
-    public static function currency($text, $investigation)
+    public static function currency($investigation, $text = null)
     {
         $nextDestination = $investigation->loc_next;
 
