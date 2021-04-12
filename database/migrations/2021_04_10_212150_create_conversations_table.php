@@ -18,9 +18,13 @@ class CreateConversationsTable extends Migration
 
             $table->foreignId('investigation_id');
             $table->foreignId('employee_id');
+            $table->string('clue');
+
             $table->text('dialog');
 
             $table->timestamps();
+
+            $table->unique(['investigation_id', 'employee_id', 'clue']);
         });
     }
 

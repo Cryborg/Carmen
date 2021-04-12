@@ -1,6 +1,7 @@
 <?php
 return [
-    'fashion_style' => 'Style',
+    'destination' => 'Destination',
+    'fashion_style' => 'Style vestimentaire',
     'fashion_styles' => [
         'casual' => 'Décontracté',
         'chic' => 'Chic',

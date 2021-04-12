@@ -19,16 +19,16 @@ class BuildingSeeder extends Seeder
                 'destination',
             ],
             'bank' => [
-                'currency', 'fashion_style', 'sign',
+                'destination', 'fashion_style', 'sign',
             ],
             'fitness_center' => [
                 'hobby', 'sign', 'hair', 'height',
             ],
             'hotel' => [
-                'currency', 'destination', 'origin',
+                'destination', 'origin',
             ],
             'internet_cafe' => [
-                'hobby', 'currency', 'destination',
+                'hobby', 'destination',
             ],
             'restaurant' => [
                 'fashion_style', 'hair', 'sign', 'height', 'origin',

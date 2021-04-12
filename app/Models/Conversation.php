@@ -9,6 +9,7 @@ class Conversation extends Model
 {
     protected $fillable = [
         'employee_id',
+        'clue',
         'dialog',
     ];
 }
