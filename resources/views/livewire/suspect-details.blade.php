@@ -16,7 +16,7 @@
             <select class="form-control" name="hair" wire:model="hair">
                 <option value=""></option>
                 @foreach ($hairs as $hair)
-                    <option value="{{ $hair }}">@lang('suspect.hairs.' . $hair)</option>
+                    <option value="{{ $hair }}">@lang('suspect.hairs.' . $hair . '.label')</option>
                 @endforeach
             </select>
         </div>
@@ -38,7 +38,7 @@
             <select class="form-control" name="origin" wire:model="origin">
                 <option value=""></option>
                 @foreach ($origins as $origin)
-                    <option value="{{ $origin }}">@lang('suspect.origins.' . $origin)</option>
+                    <option value="{{ $origin }}">@lang('suspect.origins.' . $origin . '.label')</option>
                 @endforeach
             </select>
         </div>

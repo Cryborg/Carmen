@@ -64,9 +64,8 @@ class TextModifier
         if ($text === 'flag') {
             $nextDestination = $investigation->loc_next;
 
-            return '<div class="flag">'
-                   . country($nextDestination)->getFlag()
-                   . '</div>';
+            return '<div class="shadow-lg flag-icon flag-icon-'
+                   . strtolower($nextDestination) . '"></div>';
         }
         return $text;
     }
@@ -76,5 +75,23 @@ class TextModifier
         $nextDestination = $investigation->loc_next;
 
         return country($nextDestination)->getCurrency()['iso_4217_name'];
+    }
+
+    public static function hair($investigation, $text)
+    {
+        if (in_array($text, ['f', 'ms', 'mp'])) {
+            return trans('suspect.hairs.' . $investigation->suspect->hair . '.' . $text);
+        }
+
+        return '!!' . $text . '!!';
+    }
+
+    public static function origin($investigation, $text)
+    {
+        if (in_array($text, ['f', 'm'])) {
+            return trans('suspect.origins.' . $investigation->suspect->origin . '.' . $text);
+        }
+
+        return '!!' . $text . '!!';
     }
 }

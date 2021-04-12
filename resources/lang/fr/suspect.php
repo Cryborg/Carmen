@@ -17,11 +17,30 @@ return [
     ],
     'hair' => 'Cheveux',
     'hairs' => [
-        'black' => 'Noirs',
-        'blond' => 'Blonds',
-        'brown' => 'Bruns',
-        'grey' => 'Gris',
-        'red' => 'Roux',
+        'blond' => [
+            'label' => 'Blonds',
+            'f' => 'blonde',
+            'ms' => 'blonds',
+            'mp' => 'blond',
+        ],
+        'brown' => [
+            'label' => 'Bruns',
+            'f' => 'brune',
+            'ms' => 'bruns',
+            'mp' => 'brun',
+        ],
+        'dark_blond' => [
+            'label' => 'Châtains',
+            'f' => 'châtain',
+            'ms' => 'châtains',
+            'mp' => 'châtain',
+        ],
+        'red' => [
+            'label' => 'Roux',
+            'f' => 'rousse',
+            'ms' => 'roux',
+            'mp' => 'roux',
+        ]
     ],
     'height' => 'Taille',
     'heights' => [
@@ -46,11 +65,31 @@ return [
     'name' => 'Nom',
     'origin' => 'Origine',
     'origins' => [
-        'african' => 'Africaine',
-        'arabic' => 'Arabe',
-        'asian' => 'Asiatique',
-        'european' => 'Européenne',
-        'latino' => 'Latino'
+        'african' => [
+            'label' => 'Africaine',
+            'f' => 'africaine',
+            'm' => 'africain',
+        ],
+        'arabic' => [
+            'label' => 'Arabe',
+            'f' => 'arabe',
+            'm' => 'arabe',
+        ],
+        'asian' => [
+            'label' => 'Asiatique',
+            'f' => 'asiatique',
+            'm' => 'asiatique',
+        ],
+        'european' => [
+            'label' => 'Européenne',
+            'f' => 'européenne',
+            'm' => 'européen',
+        ],
+        'latino' => [
+            'label' => 'Latino',
+            'f' => 'latino',
+            'm' => 'latino',
+        ],
     ],
     'sign' => 'Apparence',
     'signs' => [

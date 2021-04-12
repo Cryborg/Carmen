@@ -17,10 +17,9 @@ return [
     ],
     'hair' => 'Hair',
     'hairs' => [
-        'black' => 'Black',
         'blond' => 'Blond',
         'brown' => 'Brown',
-        'grey' => 'Grey',
+        'dark_blond' => 'Dark blond',
         'red' => 'Red',
     ],
     'height' => 'Height',

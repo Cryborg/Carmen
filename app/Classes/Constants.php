@@ -11,5 +11,7 @@ class Constants
         'currency',
         'destination',
         'genre',
+        'hair',
+        'origin',
     ];
 }

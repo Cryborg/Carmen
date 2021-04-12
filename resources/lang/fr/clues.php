@@ -2,13 +2,21 @@
 // List of the conversations for every clue
 return [
     'hair' => [
-        'genre[Il|Elle] avait des cheveux :hair_color',
-        'Ses longs cheveux :hair_color étaient magnifiquement coiffés.',
+        /**
+         * Accepted: ms, mp, f (no need for fs/fp)
+         * m: masculine + (s: singular, p: plural)
+         * f: feminine
+         */
+        'genre[Il|Elle] avait des cheveux hair[ms].',
+        'Ses longs cheveux hair[ms] étaient magnifiquement coiffés.',
+        'La jolie hair[f] ? Elle ne m\'a pas parlé mais j\'aurais bien aimé !',
+        'Oui j\'ai vu une femme hair[f] qui semblait se méfier de tout le monde, mais je n\'ai pas eu l\'occasion de lui parler.',
     ],
     'height' => [
         'average' => [
             'genre[Il|Elle] était de taille plutôt moyenne.',
             'genre[Il|Elle] était de taille plutôt moyenne, à peu près comme moi.',
+            'Je dirais qu\'elle devait être de taille moyenne.  Elle paraissait assez soucieuse.',
         ],
         'small' => [
             'genre[Il|Elle] levait les yeux pour parler aux gens.',
@@ -21,9 +29,10 @@ return [
         ],
     ],
     'origin' => [
-        'Son accent :origin était très mignon.',
-        'genre[Il|Elle] avait un accent :origin très léger.',
-        'J\'ai eu du mal à comprendre ce qu\'genre[il|elle] disait avec son accent :origin très prononcé.',
+        'Son accent origin[m] était très mignon.',
+        'genre[Il|Elle] avait un accent origin[m] très léger.',
+        'J\'ai eu du mal à comprendre ce qu\'genre[il|elle] disait avec son accent origin[m] très prononcé.',
+        'Si je devais deviner je dirais qu\'genre[il|elle] était d\'origine origin[f].',
     ],
     'hobby' => [
         'baseball' => [

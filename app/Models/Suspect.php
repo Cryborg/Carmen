@@ -41,10 +41,9 @@ class Suspect extends Model
     ];
 
     public const HAIR = [
-        'black',
         'blond',
         'brown',
-        'grey',
+        'dark_blond',
         'red',
     ];
 
