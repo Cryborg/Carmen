@@ -16,8 +16,9 @@
                 <div class="card-body">
                     @if (isset($displayedClue[$employee->id]))
                         @foreach ($displayedClue[$employee->id] as $clue => $dialog)
-                            <div class="player_dialog">{{ $clue }}</div>
-                            <div class="employee_dialog">{!! $dialog !!}</div>
+                            <x-dialog-player :clue="$clue"></x-dialog-player>
+
+                            <x-dialog-employee :dialog="$dialog"></x-dialog-employee>
                         @endforeach
                     @endif
                 </div>

@@ -31,8 +31,8 @@ return [
     'origin' => [
         'Son accent origin[m] était très mignon.',
         'genre[Il|Elle] avait un accent origin[m] très léger.',
-        'J\'ai eu du mal à comprendre ce qu\'genre[il|elle] disait avec son accent origin[m] très prononcé.',
-        'Si je devais deviner je dirais qu\'genre[il|elle] était d\'origine origin[f].',
+        'Son accent origin[m] était très léger.',
+        'Si je devais deviner à l\'accent je dirais qu\'genre[il|elle] était d\'origine origin[f].',
     ],
     'hobby' => [
         'baseball' => [
@@ -73,10 +73,11 @@ return [
     ],
     'sign' => [
         'scar' => [
-            'genre[Il|Elle] avait une cicatrice sur la joue.',
-            'genre[Il|Elle] avait une cicatrice récente sur le front.',
+            'genre[Il|Elle] avait une cicatrice qui semblait dater de quelques années.',
+            'Je crois me souvenir qu\'genre[il|elle] avait une fine cicatrice.'
         ],
         'piercing' => [
+            'genre[Il|Elle] venait de changer son piercing et était genre[déçu|déçue] de la qualité.',
             'genre[Il|Elle] venait de changer son piercing et était genre[déçu|déçue] de la qualité.',
         ],
         'earring' => [
