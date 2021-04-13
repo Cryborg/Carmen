@@ -109,7 +109,12 @@
   font-size: .875rem !important;
 }
 
-div.flag-icon {
+div.flag-icon.flag-icon-big {
     width: 100px;
     height: 75px;
+}
+
+div.flag-icon:not(.flag-icon-big) {
+    width: 50px;
+    height: 38px;
 }

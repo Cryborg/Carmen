@@ -27,12 +27,12 @@
                 @if (Route::has('login'))
                     <div class="">
                         @auth
-                            <a href="{{ url('/dashboard') }}" class="text-muted">Dashboard</a>
+                            <a href="{{ url('/dashboard') }}" class="text-muted">@lang('common.home')</a>
                         @else
-                            <a href="{{ route('login') }}" class="text-muted">Log in</a>
+                            <a href="{{ route('login') }}" class="text-muted">@lang('common.login')</a>
 
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="ml-4 text-muted">Register</a>
+                                <a href="{{ route('register') }}" class="ml-4 text-muted">@lang('common.register')</a>
                             @endif
                         @endif
                     </div>

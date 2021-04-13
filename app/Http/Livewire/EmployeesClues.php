@@ -14,7 +14,10 @@ class EmployeesClues extends ComponentBase
 
     public $buildingEmployees;
 
+    // Clues displayed for each employee
     public $displayedClue = [];
+
+    public $hideCluesButtons = [];
 
     public function render()
     {
@@ -24,6 +27,13 @@ class EmployeesClues extends ComponentBase
     public function selectedBuilding($cityBuilding)
     {
         $this->buildingEmployees = Employee::where('building_city_id', $cityBuilding)->get();
+
+        $currentInvestigation = $this->authUser->investigations->first();
+
+        $this->buildingEmployees->each(function ($employee) use($currentInvestigation) {
+            $this->displayedClue[$employee->id] = $this->listConversations($currentInvestigation, $employee);;
+        });
+
     }
 
     public function displayClue(Employee $employee, $clue)
@@ -31,42 +41,37 @@ class EmployeesClues extends ComponentBase
         $currentInvestigation = $this->authUser->investigations->first();
         $conversations = $currentInvestigation->conversations();
         $dialog = optional(
-            optional(
-                $conversations
-                    ->where('employee_id', $employee->id)
-                    ->where('clue', $clue)
-            )->first()
-        )->dialog;
+                      optional(
+                          $conversations
+                              ->where('employee_id', $employee->id)
+                              ->where('clue', $clue)
+                      )->first()
+                  )->dialog;
 
-        if ($dialog !== null) {
-            $this->displayedClue[$employee->id] = $this->listConversations($currentInvestigation, $employee);
-        } else {
+        if ($dialog === null) {
             $actualLocation = $employee->city->country->cca2;
 
             // Check if the player is in the right country
-            if ($actualLocation !== $currentInvestigation->loc_current
-                && $actualLocation !== $currentInvestigation->loc_next) {
-                $translations = trans('clues.wrong_place');
-                $this->displayedClue[$employee->id] = [
-                    'wrong_place' => $translations[array_rand($translations)],
-                ];
-            } else {
-                $newDialog = $this->getClueDialog($currentInvestigation, $clue);
-
-                $conversations->updateOrCreate([
-                        'employee_id' => $employee->id,
-                        'clue' => $clue,
-                    ],
-                    [
-                        'employee_id' => $employee->id,
-                        'clue' => $clue,
-                        'dialog' => $newDialog,
-                    ]
-                );
-
-                $this->displayedClue[$employee->id] = $this->listConversations($currentInvestigation, $employee);;
+            if ($actualLocation !== $currentInvestigation->loc_current//&& $actualLocation !== $currentInvestigation->loc_next
+                ) {
+                $clue = 'wrong_place';
             }
+
+            $newDialog = $this->getClueDialog($currentInvestigation, $clue);
+
+            $conversations->updateOrCreate([
+                    'employee_id' => $employee->id,
+                    'clue' => $clue,
+                ],
+                                       [
+                    'employee_id' => $employee->id,
+                    'clue' => $clue,
+                    'dialog' => $newDialog,
+                ]
+            );
         }
+
+        $this->displayedClue[$employee->id] = $this->listConversations($currentInvestigation, $employee);;
     }
 
     /**
@@ -93,7 +98,7 @@ class EmployeesClues extends ComponentBase
         return TextModifier::getModifiedText($translations[array_rand($translations)], $investigation);
     }
 
-    public function listConversations(Investigation $investigation, Employee $employee)
+    public function listConversations(Investigation $investigation, Employee $employee): array
     {
         $conversations = $investigation->conversations()
             ->where('employee_id', $employee->id)
@@ -102,8 +107,10 @@ class EmployeesClues extends ComponentBase
 
         $listConversations = [];
 
-        $conversations->each(function (Conversation $conversation) use (&$listConversations) {
+        $conversations->each(function (Conversation $conversation) use ($employee, &$listConversations) {
             $listConversations[$conversation->clue] = $conversation->dialog;
+
+            $this->hideCluesButtons[$employee->id][] = $conversation->clue;
         });
 
         return $listConversations;

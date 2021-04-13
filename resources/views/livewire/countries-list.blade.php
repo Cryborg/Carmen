@@ -1,9 +1,17 @@
 <div>
-    <select class="form-control" wire:model="selectedCountry">
+    <div class="border border-dark">
         @foreach ($countries as $country)
-            <option value="{{ $country->id }}">{{ $country->name }}</option>
+            <button class="btn btn-light w-100" wire:click="$emit('selectedCountry', {{ $country->id }})">
+                @if ($selectedCountry === $country->cca2)
+                    <span class="shadow flag-icon flag-icon-{{ strtolower($country->cca2) }}"></span>
+                @endif
+                {{ $country->name }}
+                @if ($selectedCountry === $country->cca2)
+                    <span class="shadow flag-icon flag-icon-{{ strtolower($country->cca2) }}"></span>
+                @endif
+            </button>
         @endforeach
-    </select>
+    </div>
 
     @if ($selectedCountry !== null)
         <div class="border border-dark">

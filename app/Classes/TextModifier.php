@@ -65,7 +65,7 @@ class TextModifier
             $nextDestination = $investigation->loc_next;
 
             return '<div class="shadow-lg flag-icon flag-icon-'
-                   . strtolower($nextDestination) . '"></div>';
+                   . strtolower($nextDestination) . ' flag-icon-big"></div>';
         }
         return $text;
     }

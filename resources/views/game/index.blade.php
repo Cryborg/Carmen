@@ -38,6 +38,5 @@
             </div>
         </div>
     </div>
-    @dump($authUser->investigations->first()->suspect)
 
 </x-app-layout>

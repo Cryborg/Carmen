@@ -9,8 +9,7 @@ return [
          */
         'genre[Il|Elle] avait des cheveux hair[ms].',
         'Ses longs cheveux hair[ms] étaient magnifiquement coiffés.',
-        'La jolie hair[f] ? Elle ne m\'a pas parlé mais j\'aurais bien aimé !',
-        'Oui j\'ai vu une femme hair[f] qui semblait se méfier de tout le monde, mais je n\'ai pas eu l\'occasion de lui parler.',
+        'Oui j\'ai vu genre[un homme|une femme] avec des cheveux hair[mp] qui semblait se méfier de tout le monde, mais je n\'ai pas eu l\'occasion de lui parler.',
     ],
     'height' => [
         'average' => [
