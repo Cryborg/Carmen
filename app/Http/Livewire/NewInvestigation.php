@@ -8,6 +8,13 @@ use App\Models\Suspect;
 
 class NewInvestigation extends ComponentBase
 {
+    public $investigationInProgress = false;
+
+    public function mount()
+    {
+        $this->investigationInProgress = $this->authUser->investigations()->count() > 0;
+    }
+
     public function render()
     {
         return view('livewire.new-investigation');

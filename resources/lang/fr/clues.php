@@ -123,6 +123,8 @@ return [
         'genre[Il|Elle] m\'a donné 1 currency[] de pourboire, prétextant qu\'genre[il|elle] ne lui restait plus de notre monnaie après être genre[passé|passée] au bureau de change.',
     ],
 
+    'which_subject' => 'Quelle information voulez-vous obtenir ?',
+
     // The player has chosen a wrong country
     'wrong_place' => [
         'Désolé, je n\'ai vu personne de louche aujourd\'hui',
