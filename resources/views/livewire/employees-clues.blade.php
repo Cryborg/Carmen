@@ -51,5 +51,7 @@
                 </div>
             </div>
         @endforeach
+    @else
+        {!! trans('common.investigation.start_text') !!}
     @endif
 </div>

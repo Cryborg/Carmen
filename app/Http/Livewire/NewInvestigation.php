@@ -8,7 +8,9 @@ use App\Models\Suspect;
 
 class NewInvestigation extends ComponentBase
 {
-    public $investigationInProgress = false;
+    public bool $investigationInProgress = false;
+
+    public $listeners = ['closeInvestigation'];
 
     public function mount()
     {
@@ -44,5 +46,12 @@ class NewInvestigation extends ComponentBase
         session()->forget('filters');
 
         redirect('/play');
+    }
+
+    public function closeInvestigation()
+    {
+        $this->authUser->investigations->first()->delete();
+
+        $this->investigationInProgress = false;
     }
 }

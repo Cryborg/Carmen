@@ -5,9 +5,5 @@
         </h2>
     </x-slot>
 
-    @if (Auth::user()->investigation)
-        <a href="/play">@lang('investigation.in_progress')</a>
-    @else
-        @livewire('new-investigation')
-    @endif
+    @livewire('new-investigation')
 </x-app-layout>

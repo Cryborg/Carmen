@@ -6,6 +6,7 @@
             </div>
             <div class="card-body">
                 <a class="btn btn-success" href="/play">@lang('common.investigation.resume')</a>
+                <a class="btn btn-danger" wire:click="$emit('closeInvestigation')">@lang('common.investigation.cancel')</a>
             </div>
         </div>
     @else
@@ -14,7 +15,7 @@
                 @lang('common.investigation.new')
             </div>
             <div class="card-body">
-                <button wire:click="newInvestigation">@lang('investigation.start')</button>
+                <button class="btn btn-success" wire:click="newInvestigation">@lang('common.investigation.start')</button>
             </div>
         </div>
     @endif
