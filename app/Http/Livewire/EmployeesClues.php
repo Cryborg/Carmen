@@ -7,6 +7,7 @@ use App\Classes\TextModifier;
 use App\Models\Conversation;
 use App\Models\Employee;
 use App\Models\Investigation;
+use App\Models\Specialty;
 
 class EmployeesClues extends ComponentBase
 {
@@ -87,12 +88,21 @@ class EmployeesClues extends ComponentBase
     {
         $suspect = $investigation->suspect;
 
-        $randomClue = trans('clues.' . $clue);
+        $clues = trans('clues.' . $clue);
 
-        if (is_array(current($randomClue))) {
+        if (is_array(current($clues))) {
             $translations = trans('clues.' . $clue . '.' . $suspect->$clue);
         } else {
-            $translations = $randomClue;
+            $translations = $clues;
+        }
+
+        // Check if there are some more clues in database about country-specific specialties
+        if ($clue === 'destination') {
+            $specialties = Specialty::where('country', $investigation->loc_next)->get();
+
+            $specialtiesClues = $specialties->pluck('clues');
+
+            $translations = array_merge($translations, ...$specialtiesClues);
         }
 
         return TextModifier::getModifiedText($translations[array_rand($translations)], $investigation);
