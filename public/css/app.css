@@ -10318,6 +10318,15 @@ div.flag-icon:not(.flag-icon-big) {
   height: 38px;
 }
 
+.required:after {
+  content: " *";
+  color: red;
+}
+
+.bg-light-transparency {
+  background: rgba(243, 244, 246, 0.6) !important;
+}
+
 .flag-icon-background, .flag-icon {
   background-size: contain;
   background-position: 50%;

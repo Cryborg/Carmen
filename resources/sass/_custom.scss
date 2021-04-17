@@ -118,3 +118,8 @@ div.flag-icon:not(.flag-icon-big) {
     width: 50px;
     height: 38px;
 }
+
+.required:after {
+    content:" *";
+    color: red;
+}

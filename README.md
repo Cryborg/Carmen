@@ -1,7 +1,53 @@
+                                                                  ▒▒██▒▒▒▒▒▒▒▒▒▒░░                                                                  
+                                                                ▒▒████████████████                                                                  
+                                                                ████████████████████                                                                
+                                                              ░░████████████████████                                                                
+                                                              ░░████░░░░░░██░░░░▒▒██                                                                
+                                                              ░░██░░░░░░░░▓▓░░░░▒▒██                                                                
+                                                                ████░░░░░░░░░░░░▒▒                                                                  
+                                                                ▒▒██████▓▓▓▓▓▓▓▓██                                                                  
+                                                                  ████████▓▓▓▓▓▓▓▓██                                                                
+                                                                  ▓▓██████████████▓▓                                                                
+                                                                    ▓▓██████████▓▓                                                                  
+                                                                ▒▒▒▒▒▒▓▓▓▓▓▓▓▓▒▒                                                                    
+                                                            ▒▒▒▒▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒░░              ████                                                
+                                                        ░░░░▒▒▒▒  ▓▓▒▒▒▒▒▒▒▒▒▒▒▒▒▒              ████                                                
+                                                    ░░░░          ▓▓▒▒▒▒▒▒▒▒▒▒▒▒  ░░░░      ░░░░                                                    
+                                                    ░░░░          ▓▓▒▒▒▒▒▒▒▒▒▒▒▒    ░░░░    ░░                                                      
+                                                    ░░░░          ▓▓▒▒▒▒▒▒▒▒▒▒▒▒      ░░░░░░                                                        
+                                                    ░░░░          ▓▓▒▒▒▒▒▒▒▒▒▒▒▒        ░░░░                                                        
+                                                    ▒▒▒▒          ▓▓▒▒▓▓▒▒▒▒▒▒▒▒                                                                    
+                                                    ████          ▓▓▓▓▓▓▒▒▒▒▒▒░░                                                                    
+                                                    ████          ▓▓▓▓▓▓▓▓░░▓▓▒▒                                                                    
+                                                    ▒▒▒▒          ▓▓▓▓▓▓▓▓▒▒▓▓▒▒                                                                    
+                                                                  ████████████▓▓                                                                    
+                                                                  ██▓▓      ██▓▓                                                                    
+                                                    ░░            ████      ▒▒██                                                                    
+                                                  ▒▒██            ████        ██▒▒                                                                  
+                                                ▓▓████████        ██▒▒        ░░██                                                                  
+                                                ▓▓    ▓▓▓▓████  ▒▒▓▓          ░░██                                                                  
+                                                          ▒▒▒▒██▓▓              ▒▒██                                                                
+                                                              ░░░░              ░░██▒▒                                                              
+                                                                                  ▓▓██░░  ░░                                                        
+                                                                                    ████▒▒▓▓                                                        
+                                                                                      ████                                                          
+                                                                                      ██                                                            
+
+
+# --------------- Thieves ---------------
+
+## WIP
+
+This is a Work In Progress!
+
+Many bugs are known, many features lack, and there are a ton of dialogs that are still to be written :)
+
 ## Installation
 
 ```
 artisan migrate:fresh --seed
+npm install
+npm run dev
 ```
 
 ## Login
@@ -16,8 +62,10 @@ and ask questions to numerous people in different countries, towns and buildings
 When you learn something about the thief, you record this information, and that will
 narrow the suspects list, down to one eventually. Then you can issue a warrant.
 
-## WIP
+## Create clues
 
-This is a Work In Progress!
+Player will be able to create clues for countries. This means that dialogs
+from NPCs will contain these player generated content.
 
-Many bugs are known, many features lack, and there are a ton of dialogs that are still to be written :)
+This also means that a moderation is done on these items. They will only appear
+once accepted by a moderator.

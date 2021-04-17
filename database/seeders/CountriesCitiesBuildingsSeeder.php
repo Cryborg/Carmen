@@ -4,7 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\Building;
 use App\Models\Country;
+use App\Models\Picture;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class CountriesCitiesBuildingsSeeder extends Seeder
 {
@@ -40,23 +43,32 @@ class CountriesCitiesBuildingsSeeder extends Seeder
                         ]
                     );
 
-                        if ($country->getCapital() !== '') {
-                            // Save a new city
-                            $newCity = $newCountry->cities()->create([
-                                'name'    => $country->getCapital(),
-                                'capital' => true,
-                            ]);
+                    if ($country->getCapital() !== '') {
+                        // Save a new city
+                        $newCity = $newCountry->cities()->create([
+                            'name'    => $country->getCapital(),
+                            'capital' => true,
+                        ]);
 
-                            // Attach 3 random buildings to the city
-                            $buildings = $allBuildings->shuffle();
+                        // Attach 3 random buildings to the city
+                        $buildings = $allBuildings->shuffle();
 
-                            for ($i = 1; $i <= 3; $i++) {
-                                $newCity->buildings()
-                                        ->attach($buildings->shift());
-                            }
-                        } else {
-                            dump('no capital');
+                        for ($i = 1; $i <= 3; $i++) {
+                            $newCity->buildings()
+                                    ->attach($buildings->shift());
                         }
+
+                        $filename = 'images/pictures/countries/' . $country->getIsoAlpha2() . '.jpg';
+                        dump(public_path($filename));
+                        if (File::exists(public_path($filename))) {
+                            $newPicture = new Picture([
+                                                          'path' => $filename,
+                                                      ]);
+                            $newCountry->picture()->save($newPicture);
+                        }
+                    } else {
+                        dump('no capital');
+                    }
 
                 } catch (\Exception $e) {
                     dump($e->getMessage());

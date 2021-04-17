@@ -21,7 +21,7 @@
     <body class="font-sans antialiased bg-light">
         <x-jet-banner />
         @livewire('navigation-menu')
-        
+
         <!-- Page Content -->
         <main class="container my-5">
             {{ $slot }}

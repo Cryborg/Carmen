@@ -7,7 +7,7 @@
             <form wire:submit.prevent="createClueSubmit">
                 @csrf
                 <div class="form-group row">
-                    <label for="countriesList" class="col-sm-2 col-form-label">
+                    <label for="countriesList" class="col-sm-2 col-form-label required">
                         @lang('clues.create.country')
                     </label>
                     <div class="col-sm-10">
@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="clueName" class="col-sm-2 col-form-label">
+                    <label for="clueName" class="col-sm-2 col-form-label required">
                         @lang('clues.create.name')
                     </label>
                     <div class="col-sm-10">
@@ -46,8 +46,7 @@
 
                 <fieldset class="form-group">
                     <legend>
-                        @lang('clues.create.sentences')
-                        <a class="btn btn-primary" wire:click.defer="addClue">Add</a>
+                        <div class="required">@lang('clues.create.sentences')</div>
                     </legend>
                     @foreach ($clues as $key => $value)
                         <div class="form-group row align-items-center">
@@ -58,10 +57,16 @@
                                 @enderror
                             </div>
                             <label class="col-sm-2 col-form-label">
-                                <a class="btn btn-warning" wire:click.defer="removeClue({{ $key }})">Remove</a>
+                                <a class="btn btn-outline-danger" wire:click.defer="removeClue({{ $key }})">Remove</a>
                             </label>
                         </div>
                     @endforeach
+                    <div class="form-group row align-items-center">
+                        <div class="col-sm-10"></div>
+                        <label class="col-sm-2 col-form-label">
+                            <a class="btn btn-outline-primary" wire:click.defer="addClue">Add</a>
+                        </label>
+                    </div>
                     @error('clues')
                         <div class="bg-danger text-white">{{ $message }}</div>
                     @enderror

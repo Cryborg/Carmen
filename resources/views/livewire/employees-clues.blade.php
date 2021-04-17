@@ -8,7 +8,13 @@
                 {{ $buildingEmployees->first()->city->country->name }}
             </span>
             <span>
-                <div class="shadow flag-icon flag-icon-{{ strtolower($buildingEmployees->first()->city->country->cca2) }}"></div>
+                @if (optional($buildingEmployees->first()->city->country->picture)->path !== null)
+                    <img src="{{ optional($buildingEmployees->first()->city->country->picture)->path }}"
+                        data-toggle="modal" data-target="#showPicture"
+                        style="max-height:30px">
+                @else
+                    <div class="shadow flag-icon flag-icon-{{ strtolower($buildingEmployees->first()->city->country->cca2) }}"></div>
+                @endif
             </span>
         </div>
 
@@ -59,3 +65,25 @@
         </div>
     @endif
 </div>
+
+@push('modals')
+    <div class="modal fade" id="showPicture" tabindex="-1" role="dialog" aria-labelledby="showPictureLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                </div>
+            </div>
+        </div>
+    </div>
+@endpush
+
+@push('scripts')
+    <script>
+        document.addEventListener('livewire:load', function () {
+            $('#showPicture').on('show.bs.modal', function (event) {
+                let imgSrc = $(event.relatedTarget).attr('src');
+                $(this).find('.modal-body').html('<img src="' + imgSrc + '" class="w-100 h-100">');
+            });
+        });
+    </script>
+@endpush
