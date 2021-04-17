@@ -24,7 +24,7 @@ class CountriesCitiesBuildingsSeeder extends Seeder
 
             /**
              * Don't import the country if it is not in the translations.
-             * This way I keep the database as sane as I can.
+             * This way I keep the database as clean as I can.
              */
             if (trans('countries.' . $country->getIsoAlpha2()) === 'countries.' . $country->getIsoAlpha2()) {
                 continue;

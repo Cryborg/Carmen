@@ -74,7 +74,7 @@ class TextModifier
     {
         $nextDestination = $investigation->loc_next;
 
-        return country($nextDestination)->getCurrency()['iso_4217_name'];
+        return trans('currencies.' . $nextDestination);
     }
 
     public static function hair($investigation, $text)

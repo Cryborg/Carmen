@@ -120,7 +120,7 @@ return [
     'destination' => [
         'genre[Il|Elle] m\'a montré un livre de voyage avec ce drapeau sur la couverture : destination[flag]',
         'genre[Il|Elle] a échangé sa monnaie contre des currency[].',
-        'genre[Il|Elle] m\'a donné 1 currency[] de pourboire, prétextant qu\'genre[il|elle] ne lui restait plus de notre monnaie après être genre[passé|passée] au bureau de change.',
+        'genre[Il|Elle] m\'a donné 2 currency[] de pourboire, prétextant qu\'genre[il|elle] ne lui restait plus de notre monnaie après être genre[passé|passée] au bureau de change.',
     ],
 
     'which_subject' => 'Quelle information voulez-vous obtenir ?',
