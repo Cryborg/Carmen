@@ -5,5 +5,13 @@
         </h2>
     </x-slot>
 
-    @livewire('new-investigation')
+    <div class="row">
+        <div class="col-4">
+            @livewire('new-investigation')
+        </div>
+        <div class="col-8">
+            @livewire('create-clue')
+        </div>
+    </div>
+
 </x-app-layout>

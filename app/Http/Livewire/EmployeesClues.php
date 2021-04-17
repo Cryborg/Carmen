@@ -96,13 +96,15 @@ class EmployeesClues extends ComponentBase
             $translations = $clues;
         }
 
-        // Check if there are some more clues in database about country-specific specialties
+        // Check if there are some more clues in database about country-specific clues
         if ($clue === 'destination') {
-            $specialties = Specialty::where('country', $investigation->loc_next)->get();
+            $specialties = Specialty::where('country', $investigation->loc_next)
+                ->where('approved_at', '!=', null)
+                ->get();
 
-            $specialtiesClues = $specialties->pluck('clues');
+            $dbClues = $specialties->pluck('clues');
 
-            $translations = array_merge($translations, ...$specialtiesClues);
+            $translations = array_merge($translations, ...$dbClues);
         }
 
         return TextModifier::getModifiedText($translations[array_rand($translations)], $investigation);

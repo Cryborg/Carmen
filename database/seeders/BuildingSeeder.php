@@ -16,7 +16,7 @@ class BuildingSeeder extends Seeder
     {
         $buildings = [
             'airport' => [
-                'destination',
+                'destination', 'origin',
             ],
             'bank' => [
                 'destination', 'fashion_style', 'sign',
@@ -31,7 +31,7 @@ class BuildingSeeder extends Seeder
                 'hobby', 'destination',
             ],
             'restaurant' => [
-                'fashion_style', 'hair', 'sign', 'height', 'origin',
+                'fashion_style', 'hair', 'sign', 'height',
             ],
         ];
 

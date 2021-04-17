@@ -17,6 +17,7 @@ class CreateCountriesTable extends Migration
             $table->id();
 
             $table->string('cca2', 2);
+            $table->index('cca2');
         });
     }
 

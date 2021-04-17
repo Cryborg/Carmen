@@ -36,6 +36,15 @@ class SpecialtiesSeeder extends Seeder
                     'genre[Il|Elle] me disait que le nougat de Montélimar ne pourrait pas souffrir de la contrefaçon, tant son goût et sa qualité sont uniques.',
                 ]
             ],
+            [
+                'country' => 'FR',
+                'name' => 'Arc de Triomphe',
+                'wikipedia_link' => 'Arc_de_triomphe_de_l%27Étoile',
+                'clues' => [
+                    'genre[Il|Elle] me disait vouloir photographier l\'Arc de Triomphe et l\'avenue des Champs-Elysées.',
+                    'genre[Il|Elle] voulait faire son footing en partant de l\'Obélisque de la Concorde pour terminer à la Défense.',
+                ]
+            ],
         ];
 
         // Fake data for testing
@@ -58,7 +67,11 @@ class SpecialtiesSeeder extends Seeder
         $user = User::where('name', 'Cryborg')->first();
 
         foreach ($specialties as $specialty) {
-            Specialty::create($specialty + ['user_id' => $user->id]);
+            Specialty::create($specialty + [
+                'user_id' => $user->id,
+                'approved_at' => now(),
+                'approved_by' => $user->id,
+            ]);
         }
     }
 }

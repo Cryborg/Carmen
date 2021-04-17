@@ -23,9 +23,14 @@ class CreateSpecialtiesTable extends Migration
             $table->json('clues');
 
             $table->foreignId('user_id');
-//            $table->foreign('country')
-//                ->references('cca2')
-//                ->on('countries');
+
+            $table->timestamp('approved_at')->nullable();
+
+            $table->bigInteger('approved_by')->nullable()->unsigned();
+            $table->foreign('approved_by')
+                ->nullable()
+                ->references('id')
+                ->on('users');
 
             $table->timestamps();
         });

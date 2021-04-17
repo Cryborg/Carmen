@@ -52,6 +52,10 @@
             </div>
         @endforeach
     @else
-        {!! trans('common.investigation.start_text') !!}
+        <div class="card">
+            <div class="card-body">
+                {!! trans('common.investigation.start_text') !!}
+            </div>
+        </div>
     @endif
 </div>

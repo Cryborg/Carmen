@@ -131,4 +131,13 @@ return [
         'Vous avez dû vous tromper, je n\'ai vu personne de louche aujourd\'hui',
         'Je pense que vous vous êtes trompé, aucune personne ne correspondant à cette description n\'est passé par ici.',
     ],
+
+    'create' => [
+        'title' => 'Créer un indice',
+        'country' => 'Pays',
+        'name' => 'Nom',
+        'link' => 'Lien Wikipédia',
+        'sentences' => 'Répliques',
+        'submit' => 'Enregistrer',
+    ],
 ];
