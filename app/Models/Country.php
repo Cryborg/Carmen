@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Country extends Model
 {
@@ -27,8 +27,13 @@ class Country extends Model
         return $this->hasMany(City::class);
     }
 
-    public function picture(): MorphOne
+    public function pictures(): MorphMany
     {
-        return $this->morphOne(Picture::class, 'imageable');
+        return $this->morphMany(Picture::class, 'imageable');
+    }
+
+    public function getPicturePath()
+    {
+        return 'countries' . DIRECTORY_SEPARATOR . $this->cca2 . DIRECTORY_SEPARATOR;
     }
 }

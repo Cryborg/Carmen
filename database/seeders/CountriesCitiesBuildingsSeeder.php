@@ -58,13 +58,14 @@ class CountriesCitiesBuildingsSeeder extends Seeder
                                     ->attach($buildings->shift());
                         }
 
-                        $filename = 'images/pictures/countries/' . $country->getIsoAlpha2() . '.jpg';
-                        dump(public_path($filename));
-                        if (File::exists(public_path($filename))) {
+                        $pictures = Storage::disk('pictures')
+                            ->files('countries/' . $country->getIsoAlpha2());
+
+                        foreach ($pictures as $picture) {
                             $newPicture = new Picture([
-                                                          'path' => $filename,
-                                                      ]);
-                            $newCountry->picture()->save($newPicture);
+                                'filename' => File::basename($picture),
+                            ]);
+                            $newCountry->pictures()->save($newPicture);
                         }
                     } else {
                         dump('no capital');

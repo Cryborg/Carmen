@@ -8,8 +8,8 @@
                 {{ $buildingEmployees->first()->city->country->name }}
             </span>
             <span>
-                @if (optional($buildingEmployees->first()->city->country->picture)->path !== null)
-                    <img src="{{ optional($buildingEmployees->first()->city->country->picture)->path }}"
+                @if ($buildingEmployees->first()->city->country->pictures->count() > 0)
+                    <img src="{{ optional($buildingEmployees->first()->city->country->pictures)->first()->image_path }}"
                         data-toggle="modal" data-target="#showPicture"
                         style="max-height:30px">
                 @else
