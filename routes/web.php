@@ -14,12 +14,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::view('/', 'dashboard')->name('dashboard');
 
     Route::get('/play', [GameController::class, 'index'])->name('play');
-
-    Route::get('/suspect/{suspect}', [SuspectController::class, 'show'])->name('suspect.show');
 });
