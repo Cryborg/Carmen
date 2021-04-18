@@ -7,6 +7,18 @@ use Illuminate\Support\Facades\Storage;
 
 class Picture extends Model
 {
+    protected $dates = [
+        'approved_at' => 'timestamp',
+    ];
+
+    protected $fillable = [
+        'approved_at',
+        'approved_by',
+        'filename',
+        'imageable_id',
+        'imageable_type',
+    ];
+
     public function imageable()
     {
         return $this->morphTo();

@@ -18,6 +18,16 @@ class CreatePicturesTable extends Migration
 
             $table->morphs('imageable');
             $table->string('filename');
+            $table->string('title')->nullable();
+            $table->text('description')->nullable();
+
+            $table->timestamp('approved_at')->nullable();
+
+            $table->bigInteger('approved_by')->nullable()->unsigned();
+            $table->foreign('approved_by')
+                ->nullable()
+                ->references('id')
+                ->on('users');
 
             $table->timestamps();
         });
