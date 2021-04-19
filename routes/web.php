@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\SuspectController;
+use App\Http\Livewire\Contribute;
+use App\Http\Livewire\PlayGame;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +19,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::view('/', 'dashboard')->name('dashboard');
 
-    Route::get('/play', [GameController::class, 'index'])->name('play');
+    Route::get('/play', PlayGame::class);
+    Route::get('/contribute', Contribute::class)->name('contribute');
 });

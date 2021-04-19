@@ -14,6 +14,9 @@
                 <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                     @lang('common.home')
                 </x-jet-nav-link>
+                <x-jet-nav-link href="{{ route('contribute') }}" :active="request()->routeIs('contribute')">
+                    @lang('common.contribute')
+                </x-jet-nav-link>
             </ul>
 
             <!-- Right Side Of Navbar -->

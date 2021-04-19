@@ -1,4 +1,4 @@
-<x-app-layout>
+<div>
     <div class="row">
         <div class="col-7 shadow bg-white">
             @livewire('employees-clues')
@@ -38,5 +38,4 @@
             </div>
         </div>
     </div>
-
-</x-app-layout>
+</div>

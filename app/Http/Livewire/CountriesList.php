@@ -22,7 +22,6 @@ class CountriesList extends ComponentBase
 
     public ?string $selectedCountry = null;
     public ?int $selectedCity = null;
-    public ?int $selectedBuilding = null;
 
     public $rules = [
         'selectedCountry' => 'exists:countries',
@@ -45,9 +44,6 @@ class CountriesList extends ComponentBase
         $firstCity = $this->cities->first();
         $this->selectedCity = $firstCity->id;
         $this->buildings = $firstCity->buildings;
-
-        //$this->emit('selectedCity', $firstCity->id);
-        //$this->emit('selectedBuilding', $this->buildings->first()->pivot->id);
     }
 
     /**

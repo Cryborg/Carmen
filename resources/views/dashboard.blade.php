@@ -9,9 +9,6 @@
         <div class="col-4">
             @livewire('new-investigation')
         </div>
-        <div class="col-8">
-            @livewire('create-clue')
-        </div>
     </div>
 
 </x-app-layout>

@@ -133,11 +133,11 @@ return [
     ],
 
     'create' => [
-        'title' => 'Créer un indice',
         'country' => 'Pays',
-        'name' => 'Nom',
         'link' => 'Lien Wikipédia',
+        'name' => 'Nom',
         'sentences' => 'Répliques',
         'submit' => 'Enregistrer',
+        'title' => 'Créer un indice',
     ],
 ];

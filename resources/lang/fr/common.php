@@ -1,6 +1,7 @@
 <?php
 return [
     'contacts' => 'Contacts',
+    'contribute' => 'Contribuer',
     'employee' => 'Employé(e)',
     'home'     => 'Accueil',
     'investigation' => [

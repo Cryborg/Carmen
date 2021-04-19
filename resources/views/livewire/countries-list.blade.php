@@ -5,6 +5,7 @@
                 @if ($selectedCountry === $country->cca2)
                     <span class="shadow flag-icon flag-icon-{{ strtolower($country->cca2) }}"></span>
                 @endif
+
                 {{ $country->name }}
                 @if ($selectedCountry === $country->cca2)
                     <span class="shadow flag-icon flag-icon-{{ strtolower($country->cca2) }}"></span>
