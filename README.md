@@ -45,7 +45,9 @@ Many bugs are known, many features lack, and there are a ton of dialogs that are
 ## Installation
 
 ```
-artisan migrate:fresh --seed
+docker-compose up -d
+docker-compose exec app php artisan key:generate
+docker-compose exec app php artisan migrate:fresh --seed
 npm install
 npm run dev
 ```
